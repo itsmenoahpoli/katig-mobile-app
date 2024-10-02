@@ -1,13 +1,12 @@
 import React from "react";
-import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Slot } from "expo-router";
 
 export default function () {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <StatusBar />
-      <Stack screenOptions={{ headerShown: false }} />
-    </SafeAreaView>
+    <>
+      <StatusBar style="auto" />
+      <Slot />
+    </>
   );
 }

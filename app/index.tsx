@@ -1,8 +1,8 @@
 import React from "react";
-import { Text } from "react-native";
+import { SplashScreen } from "@components/index";
 
 const RootPage: React.FC = () => {
-  return <Text>RootPage</Text>;
+  return <SplashScreen />;
 };
 
 export default RootPage;
