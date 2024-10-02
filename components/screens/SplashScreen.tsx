@@ -1,11 +1,10 @@
 import React from "react";
 import { useRouter } from "expo-router";
 import { View, Image } from "react-native";
-import { ImageAssets } from "@assets/index";
+import { imageAssets } from "@assets/index";
 
 export const SplashScreen: React.FC = () => {
   const router = useRouter();
-  const uri = ImageAssets.brandLogo;
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -15,7 +14,7 @@ export const SplashScreen: React.FC = () => {
 
   return (
     <View className="flex-1 items-center justify-center bg-primary">
-      <Image source={uri} resizeMethod="resize" resizeMode="contain" className="h-[500px] w-[500px]" />
+      <Image source={imageAssets.brandLogo} resizeMethod="resize" resizeMode="contain" className="h-[350px] w-[350px]" />
     </View>
   );
 };
