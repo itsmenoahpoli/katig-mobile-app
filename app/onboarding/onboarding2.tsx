@@ -19,8 +19,8 @@ const Onboarding2Page = () => {
       </View>
 
       <View className="w-full px-5">
-        <Pressable className="w-full h-[60px] bg-primary rounded-2xl items-center justify-center">
-          <Text className="text-lg text-white font-bold">NEXT</Text>
+        <Pressable className="w-full h-[50px] bg-primary rounded-2xl items-center justify-center">
+          <Text className="text-lg text-white font-bold">GET STARTED</Text>
         </Pressable>
       </View>
     </View>
