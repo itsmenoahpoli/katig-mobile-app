@@ -13,7 +13,7 @@ const Onboarding2Page = () => {
 
   return (
     <View className="flex-1 justify-between items-center pb-[50px] relative">
-      <Pressable className="absolute top-10 right-10" onPress={handleBack}>
+      <Pressable className="absolute top-10 right-10 z-50" onPress={handleBack}>
         <Feather name="arrow-left" color="#6796DC" size={32} />
       </Pressable>
       <View className="h-full w-full flex flex-col justify-center items-center gap-y-5 px-10">

@@ -3,7 +3,7 @@
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
       "@api/*": ["api/*"],
       "@app/*": ["app/*"],
