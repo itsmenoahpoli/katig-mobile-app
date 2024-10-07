@@ -11,6 +11,10 @@ const Onboarding2Page = () => {
     router.back();
   };
 
+  const handleGoToSignin = () => {
+    router.push("/auth/signin");
+  };
+
   return (
     <View className="flex-1 justify-between items-center pb-[50px] relative">
       <Pressable className="absolute top-10 right-10 z-50" onPress={handleBack}>
@@ -29,7 +33,9 @@ const Onboarding2Page = () => {
 
       <View className="w-full px-5">
         <Pressable className="w-full h-[50px] bg-primary rounded-2xl items-center justify-center">
-          <Text className="text-lg text-white font-bold">GET STARTED</Text>
+          <Text className="text-lg text-white font-bold" onPress={handleGoToSignin}>
+            GET STARTED
+          </Text>
         </Pressable>
       </View>
     </View>
