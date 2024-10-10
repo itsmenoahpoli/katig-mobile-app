@@ -2,11 +2,11 @@ import React from "react";
 import { useRouter } from "expo-router";
 import { View, Text, TextInput, Pressable } from "react-native";
 
-export const SigninForm: React.FC = () => {
+export const SignupForm: React.FC = () => {
   const router = useRouter();
 
-  const handleGoToSignup = () => {
-    router.push("/auth/signup");
+  const handleGoToSignin = () => {
+    router.push("/auth/signin");
   };
 
   return (
@@ -23,9 +23,9 @@ export const SigninForm: React.FC = () => {
         <Text className="text-lg font-medium">LOG IN</Text>
       </Pressable>
       <View className="flex flex-row items-center">
-        <Text>Don't have an account? &nbsp;</Text>
-        <Pressable onPress={handleGoToSignup}>
-          <Text className="text-white font-medium underline">Sign Up</Text>
+        <Text>Already have an account? &nbsp;</Text>
+        <Pressable onPress={handleGoToSignin}>
+          <Text className="text-white font-medium underline">Sign In</Text>
         </Pressable>
       </View>
     </View>
