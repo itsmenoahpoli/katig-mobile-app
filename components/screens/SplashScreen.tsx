@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "expo-router";
-import { View, Image } from "react-native";
+import { View, Image, Text } from "react-native";
 import { imageAssets } from "@assets/index";
 
 export const SplashScreen: React.FC = () => {
@@ -13,8 +13,9 @@ export const SplashScreen: React.FC = () => {
   }, []);
 
   return (
-    <View className="flex-1 items-center justify-center bg-primary">
+    <View className="flex-1 items-center justify-center bg-primary relative">
       <Image source={imageAssets.brandLogo} resizeMethod="resize" resizeMode="contain" className="h-[350px] w-[350px]" />
+      <Text className="text-blue-100 absolute left-5 bottom-5">App Version 1.0.0</Text>
     </View>
   );
 };

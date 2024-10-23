@@ -16,6 +16,35 @@
       "tsconfigPaths": true
     },
     "scheme": "katig-app",
-    "plugins": ["expo-router"]
+    "plugins": [
+      "expo-router"
+    ],
+    "build": {
+      "preview": {
+        "android": {
+          "buildType": "apk"
+        }
+      },
+      "preview2": {
+        "android": {
+          "gradleCommand": ":app:assembleRelease"
+        }
+      },
+      "preview3": {
+        "developmentClient": true
+      },
+      "preview4": {
+        "distribution": "internal"
+      },
+      "production": {}
+    },
+    "extra": {
+      "eas": {
+        "projectId": "83ce1470-32d0-46cf-a40f-8c190e1f9c99"
+      }
+    },
+    "android": {
+      "package": "com.itsmenoahpoli.katigmobileapp"
+    }
   }
 }

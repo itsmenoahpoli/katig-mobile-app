@@ -1,3 +1,19 @@
 export const useAuthService = () => {
-  return {};
+  const accountLogout = async () => {
+    //
+  };
+
+  const accountLogin = async () => {
+    //
+  };
+
+  const accountRegister = async () => {
+    //
+  };
+
+  return {
+    accountLogout,
+    accountLogin,
+    accountRegister,
+  };
 };
