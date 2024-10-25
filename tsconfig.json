@@ -14,8 +14,8 @@
       "@services/*": ["services/*"],
       "@stores/*": ["stores/*"],
       "@styles/*": ["styles/*"],
-      "@utils/*": ["aputils"],
-      "types/*": ["types/*"]
+      "@utils/*": ["utils/*"],
+      "@@types/*": ["types/*"]
     }
   },
   "exclude": ["node_modules", "babel.config.js", "metro.config.js"]
