@@ -1,13 +1,17 @@
 import { Notifier, NotifierComponents } from "react-native-notifier";
+import { AxiosError } from "axios";
+import { useRouter } from "expo-router";
 import { httpClient } from "@api/index";
 import { useAuthStore } from "@stores/index";
+import { HTTP_RESPONSES } from "@constants/index";
 import type { Credentials } from "@@types/auth";
 
 export const useAuthService = () => {
-  const { SET_USER, SET_TOKEN } = useAuthStore();
+  const router = useRouter();
+  const { SET_USER, SET_TOKEN, CLEAR_AUTH } = useAuthStore();
 
   const authLogout = async () => {
-    //
+    CLEAR_AUTH();
   };
 
   const authLogin = async (credentials: Credentials) => {
@@ -25,9 +29,24 @@ export const useAuthService = () => {
             alertType: "success",
           },
         });
+
+        setTimeout(() => {
+          router.push("/home/index");
+        }, 2000);
       })
       .catch((error) => {
         console.log(error);
+        if (error instanceof AxiosError) {
+          if (error.response?.status === HTTP_RESPONSES.UNAUTHORIZED) {
+            Notifier.showNotification({
+              description: "Invalid email/password, try again",
+              Component: NotifierComponents.Alert,
+              componentProps: {
+                alertType: "warn",
+              },
+            });
+          }
+        }
       });
   };
 
