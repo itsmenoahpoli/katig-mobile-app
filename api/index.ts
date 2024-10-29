@@ -13,6 +13,8 @@ instance.interceptors.request.use(
     config.headers["Accept"] = "application/json";
     config.headers["Content-Type"] = "application/json";
 
+    console.info("[HTTP-REQUEST]", config);
+
     return config;
   },
   (error: AxiosError): Promise<AxiosError> => {
