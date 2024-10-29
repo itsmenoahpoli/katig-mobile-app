@@ -13,10 +13,10 @@ export const SigninForm: React.FC = () => {
     control,
     formState: { errors },
   } = useForm<Credentials>({
-    defaultValues: {
-      email: "patrickpolicarpio08@gmail.com",
-      password: "011898Policarpio$",
-    },
+    // defaultValues: {
+    //   email: "patrickpolicarpio08@gmail.com",
+    //   password: "011898Policarpio$",
+    // },
   });
 
   const handleGoToSignup = () => {
