@@ -6,6 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "platforms": ["ios", "android"],
     "ios": {
       "supportsTablet": true
     },
@@ -16,9 +17,7 @@
       "tsconfigPaths": true
     },
     "scheme": "katig-app",
-    "plugins": [
-      "expo-router"
-    ],
+    "plugins": ["expo-router"],
     "build": {
       "preview": {
         "android": {
