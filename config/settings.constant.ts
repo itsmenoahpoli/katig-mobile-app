@@ -1,3 +1,3 @@
-import { APP_API_URL } from "@env";
+import { EXPO_PUBLIC_API_URL } from "@env";
 
-export { APP_API_URL };
+export { EXPO_PUBLIC_API_URL as APP_API_URL };

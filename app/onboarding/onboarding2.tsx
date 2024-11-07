@@ -4,7 +4,7 @@ import { View, Image, Text, Pressable } from "react-native";
 import Feather from "@expo/vector-icons/Feather";
 import { imageAssets } from "@assets/index";
 
-const Onboarding2Page = () => {
+export default (): JSX.Element => {
   const router = useRouter();
 
   const handleBack = () => {
@@ -41,5 +41,3 @@ const Onboarding2Page = () => {
     </View>
   );
 };
-
-export default Onboarding2Page;

@@ -12,12 +12,7 @@ export const SigninForm: React.FC = () => {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<Credentials>({
-    defaultValues: {
-      email: "patrickpolicarpio08@gmail.com",
-      password: "011898Policarpio$",
-    },
-  });
+  } = useForm<Credentials>();
 
   const handleGoToSignup = () => {
     router.push("/auth/signup");

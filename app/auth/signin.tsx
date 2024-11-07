@@ -3,7 +3,7 @@ import { View, Text, Image } from "react-native";
 import { imageAssets } from "@assets/index";
 import { SigninForm } from "@components/index";
 
-const SigninPage: React.FC = () => {
+export default (): JSX.Element => {
   return (
     <View className="flex-1 items-center bg-primary pt-[90px]">
       <Image source={imageAssets.brandLogoOnly} className="h-[100px] w-[100px] mb-[50px]" />
@@ -16,5 +16,3 @@ const SigninPage: React.FC = () => {
     </View>
   );
 };
-
-export default SigninPage;

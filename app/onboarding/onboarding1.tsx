@@ -3,7 +3,7 @@ import { useRouter } from "expo-router";
 import { View, Image, Text, Pressable } from "react-native";
 import { imageAssets } from "@assets/index";
 
-const Onboarding1Page = () => {
+export default (): JSX.Element => {
   const router = useRouter();
 
   const handleNext = () => {
@@ -31,5 +31,3 @@ const Onboarding1Page = () => {
     </View>
   );
 };
-
-export default Onboarding1Page;
