@@ -14,8 +14,10 @@ export default (): JSX.Element => {
     <View className="flex-1 justify-between items-center pb-[50px]">
       <View className="h-full w-full flex flex-col justify-center items-center gap-y-5 px-10">
         <Image source={imageAssets.onboardingBoat} resizeMethod="resize" resizeMode="contain" className="h-[300px] w-[300px]" />
-        <Text className="text-[30px] text-center text-dark font-bold mb-5">We schedule whenever you want</Text>
-        <Text className="text-center text-dark mb-5">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, expedita.</Text>
+        <Text className="text-[30px] text-center text-dark font-bold mb-5">We schedule whenever trip you want</Text>
+        <Text className="text-lg text-center text-dark mb-5">
+          Book your ideal boat trip with us and choose the perfect time that fits your schedule
+        </Text>
 
         <View className="flex flex-row items-center justify-center gap-x-2">
           <View className="h-[6px] w-[30px] rounded-xl bg-primary" />
