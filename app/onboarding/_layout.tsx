@@ -6,10 +6,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export default function () {
   return (
     <>
-      <StatusBar style="dark" />
-      <SafeAreaView className="flex-1">
-        <Slot />
-      </SafeAreaView>
+      <StatusBar style="light" />
+      <Slot />
     </>
   );
 }
