@@ -9,15 +9,15 @@ import {
 import { StatusBar } from "expo-status-bar";
 import { Slot } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useLayoutStore } from "@stores/index";
+import { useLayout } from "@hooks/index";
 
 SplashScreen.hideAsync();
 
 export default function () {
-  const { baseBackground, SET_BASE_BACKGROUND } = useLayoutStore();
+  const { setBaseBackground, baseBackground } = useLayout();
 
   React.useEffect(() => {
-    SET_BASE_BACKGROUND("primary");
+    setBaseBackground("primary");
   }, []);
 
   const onGestureEvent = (event: GestureHandlerGestureEvent) => {
