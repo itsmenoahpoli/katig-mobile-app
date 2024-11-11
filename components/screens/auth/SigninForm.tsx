@@ -12,7 +12,12 @@ export const SigninForm: React.FC = () => {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<Credentials>();
+  } = useForm<Credentials>({
+    // defaultValues: {
+    //   email: "patrickpolicarpio08@gmail.com",
+    //   password: "12345678",
+    // },
+  });
 
   const handleGoToSignup = () => {
     router.push("/auth/signup");
@@ -40,7 +45,9 @@ export const SigninForm: React.FC = () => {
             />
           )}
         />
-        {errors.email && <Text style={{ color: "red" }}>{errors.email.message}</Text>}
+        {errors.email && (
+          <Text style={{ color: "red" }}>{errors.email.message}</Text>
+        )}
       </View>
 
       <View>
@@ -60,16 +67,23 @@ export const SigninForm: React.FC = () => {
             />
           )}
         />
-        {errors.password && <Text style={{ color: "red" }}>{errors.password.message}</Text>}
+        {errors.password && (
+          <Text style={{ color: "red" }}>{errors.password.message}</Text>
+        )}
       </View>
 
       <View className="flex items-end mb-3">
         <Pressable>
-          <Text className="text-blue-200 font-medium underline">Forgot Password?</Text>
+          <Text className="text-blue-200 font-medium underline">
+            Forgot Password?
+          </Text>
         </Pressable>
       </View>
 
-      <Pressable className="w-full flex items-center bg-[#fcfcfc] rounded-full py-3 px-4 mb-3" onPress={handleSignin}>
+      <Pressable
+        className="w-full flex items-center bg-[#fcfcfc] rounded-full py-2 px-4 mb-3"
+        onPress={handleSignin}
+      >
         <Text className="text-lg font-medium">LOG IN</Text>
       </Pressable>
 

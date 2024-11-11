@@ -1,9 +1,10 @@
 import { Notifier, NotifierComponents } from "react-native-notifier";
 import { AxiosError } from "axios";
 import { useRouter } from "expo-router";
+import { HTTP_RESPONSES } from "@constants/index";
 import { httpClient } from "@api/index";
 import { useAuthStore } from "@stores/index";
-import { HTTP_RESPONSES } from "@constants/index";
+import { alertNotify } from "@utils/index";
 import type { Credentials } from "@@types/auth";
 
 export const useAuthService = () => {
@@ -18,16 +19,14 @@ export const useAuthService = () => {
     return await httpClient
       .post("auth/sign-in", credentials)
       .then((response) => {
+        console.log('success')
         const { token, user } = response.data;
         SET_TOKEN(token);
         SET_USER(user);
 
-        Notifier.showNotification({
+        alertNotify({
           description: "Successfully logged-in, redirecting ...",
-          Component: NotifierComponents.Alert,
-          componentProps: {
-            alertType: "success",
-          },
+          alertType: "success",
         });
 
         setTimeout(() => {
@@ -35,24 +34,22 @@ export const useAuthService = () => {
         }, 2000);
       })
       .catch((error) => {
-        console.log(error);
+        console.log('error')
+
         if (error instanceof AxiosError) {
           if (error.response?.status === HTTP_RESPONSES.UNAUTHORIZED) {
-            Notifier.showNotification({
+            alertNotify({
               description: "Invalid email/password, try again",
-              Component: NotifierComponents.Alert,
-              componentProps: {
-                alertType: "warn",
-              },
+              alertType: "warn",
             });
           }
         }
       });
   };
 
-  const authSignupAccount = async (credentials: Credentials) => {
+  const authSignup = async (payload: any) => {
     return await httpClient
-      .post("auth/sign-in", credentials)
+      .post("auth/sign-up", payload)
       .then((response) => {
         console.log(response);
       })
@@ -64,6 +61,6 @@ export const useAuthService = () => {
   return {
     authLogout,
     authLogin,
-    authSignupAccount,
+    authSignup,
   };
 };

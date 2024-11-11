@@ -8,8 +8,9 @@ export const SplashScreen: React.FC = () => {
 
   React.useEffect(() => {
     setTimeout(() => {
-      router.push("/onboarding/onboarding1");
-    }, 4000);
+      // router.push("/onboarding/onboarding1");
+      router.push("/auth/signup");
+    }, 400);
   }, []);
 
   return (

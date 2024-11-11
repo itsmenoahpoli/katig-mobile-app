@@ -2,30 +2,50 @@ import React from "react";
 import { useRouter } from "expo-router";
 import { View, Text, TextInput, Pressable } from "react-native";
 import { useForm, Controller } from "react-hook-form";
+import { useAuthService } from "@services/auth.service";
+import { alertNotify } from "@utils/index";
+import type { SignUpPayload } from "@@types/auth";
 
 export const SignupForm: React.FC = () => {
   const router = useRouter();
+  const { authSignup } = useAuthService();
 
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm();
-
-  const onSubmit = (data: any) => {
-    console.log(data);
-  };
+  } = useForm<SignUpPayload>({
+    // defaultValues: {
+    //   fullname: "Patrick Policarpio",
+    //   username: "patrickpoli18",
+    //   email: "patrickpolicarpio08@gmail.com",
+    //   password: "12345678",
+    //   confirmPassword: "1234522678",
+    // },
+  });
 
   const handleGoToSignin = () => {
     router.push("/auth/signin");
   };
+
+  const handleSignup = handleSubmit(async (formData) => {
+    if (formData.password !== formData.confirmPassword) {
+      console.log("Passwords must match");
+      return alertNotify({
+        alertType: "warn",
+        description: "Passwords must match",
+      });
+    }
+
+    return await authSignup(formData);
+  });
 
   return (
     <View className="w-full flex flex-col gap-y-3">
       <View>
         <Controller
           control={control}
-          name="fullName"
+          name="fullname"
           rules={{ required: "Full Name is required" }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
@@ -38,7 +58,11 @@ export const SignupForm: React.FC = () => {
             />
           )}
         />
-        {errors.fullName && <Text className="text-red-500">{errors.fullName.message?.toString()}</Text>}
+        {errors.fullname && (
+          <Text className="text-red-500">
+            {errors.fullname.message?.toString()}
+          </Text>
+        )}
       </View>
 
       <View>
@@ -47,7 +71,10 @@ export const SignupForm: React.FC = () => {
           name="username"
           rules={{
             required: "Username is required",
-            minLength: { value: 3, message: "Username must be at least 3 characters long" },
+            minLength: {
+              value: 3,
+              message: "Username must be at least 3 characters long",
+            },
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
@@ -60,7 +87,9 @@ export const SignupForm: React.FC = () => {
             />
           )}
         />
-        {errors.username && <Text className="text-red-500">{errors.username?.toString()}</Text>}
+        {errors.username && (
+          <Text className="text-red-500">{errors.username?.toString()}</Text>
+        )}
       </View>
 
       <View>
@@ -86,7 +115,9 @@ export const SignupForm: React.FC = () => {
             />
           )}
         />
-        {errors.email && <Text className="text-red-500">{errors.email?.toString()}</Text>}
+        {errors.email && (
+          <Text className="text-red-500">{errors.email?.toString()}</Text>
+        )}
       </View>
 
       <View>
@@ -95,7 +126,10 @@ export const SignupForm: React.FC = () => {
           name="password"
           rules={{
             required: "Password is required",
-            minLength: { value: 6, message: "Password must be at least 6 characters long" },
+            minLength: {
+              value: 6,
+              message: "Password must be at least 6 characters long",
+            },
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
@@ -109,7 +143,9 @@ export const SignupForm: React.FC = () => {
             />
           )}
         />
-        {errors.password && <Text className="text-red-500">{errors.password?.toString()}</Text>}
+        {errors.password && (
+          <Text className="text-red-500">{errors.password?.toString()}</Text>
+        )}
       </View>
 
       <View>
@@ -131,10 +167,17 @@ export const SignupForm: React.FC = () => {
             />
           )}
         />
-        {errors.confirmPassword && <Text className="text-red-500">{errors.confirmPassword?.toString()}</Text>}
+        {errors.confirmPassword && (
+          <Text className="text-red-500">
+            {errors.confirmPassword?.toString()}
+          </Text>
+        )}
       </View>
 
-      <Pressable className="w-full flex items-center bg-[#fcfcfc] rounded-full p-4 mb-3" onPress={handleSubmit(onSubmit)}>
+      <Pressable
+        className="w-full flex items-center bg-[#fcfcfc] rounded-full py-2 px-3 mb-3"
+        onPress={handleSignup}
+      >
         <Text className="text-lg font-medium">REGISTER</Text>
       </Pressable>
 
