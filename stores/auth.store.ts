@@ -1,10 +1,9 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { storage } from "@utils/index";
-// import type { AuthStore } from "@/types/store.d";
+import type { AuthStore } from "types/store";
 
-export const useAuthStore = create<any>()(
+export const useAuthStore = create<AuthStore>()(
   persist(
     (set: any) => ({
       authUser: undefined,
