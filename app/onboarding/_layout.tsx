@@ -3,7 +3,6 @@ import { Slot } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useLayoutStore } from "@stores/index";
 
-
 export default function () {
   const { SET_BASE_BACKGROUND } = useLayoutStore();
 

@@ -9,12 +9,12 @@ export const SplashScreen: React.FC = () => {
   React.useEffect(() => {
     setTimeout(() => {
       // router.push("/onboarding/onboarding1");
-      router.push("/auth/signup");
+      router.push("/home");
     }, 400);
   }, []);
 
   return (
-    <View className="flex-1 items-center justify-center bg-primary relative">
+    <View className="flex-1 h-screen items-center justify-center bg-primary relative">
       <View className="flex flex-col gap-y-2">
         <Image source={imageAssets.brandLogo} resizeMethod="resize" resizeMode="contain" className="h-[250px] w-[250px]" />
         <ActivityIndicator color="white" />
