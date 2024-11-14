@@ -10,6 +10,7 @@ import { StatusBar } from "expo-status-bar";
 import { Slot } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useLayout } from "@hooks/index";
+import { AppNetworkChecker } from "@components/index";
 
 SplashScreen.hideAsync();
 
@@ -31,6 +32,7 @@ export default function (): JSX.Element {
         <SafeAreaView className={`flex-1 bg-${baseBackground}`}>
           <NotifierWrapper>
             <StatusBar style="light" />
+            <AppNetworkChecker />
             <Slot />
           </NotifierWrapper>
         </SafeAreaView>

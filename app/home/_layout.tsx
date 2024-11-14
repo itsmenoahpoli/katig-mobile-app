@@ -1,8 +1,8 @@
 import React from "react";
 import { Slot } from "expo-router";
 import { View, Text } from "react-native";
-import { HeaderNav } from "@components/index";
-import { useLayout } from "@hooks/layout.hook";
+import { useLayout } from "@hooks/index";
+import { HeaderNav, BottomNav } from "@components/index";
 
 export default (): JSX.Element => {
   const { setBaseBackground } = useLayout();
@@ -20,7 +20,7 @@ export default (): JSX.Element => {
       <View className="flex-1 pt-[70px]">
         <Slot />
       </View>
-      <Text className="fixed bottom-5">Footer</Text>
+      <BottomNav />
     </View>
   );
 };

@@ -6,9 +6,9 @@ export type Props = {};
 
 export const BottomNav: React.FC<Props> = ({}) => {
   return (
-    <View className="w-full h-[60px] flex flex-row bg-white">
+    <View className="w-full h-[60px] flex flex-row justify-center items-center bg-white border-t border-gray-200 px-5">
       <Pressable>
-        <Feather name="menu" size={24} color="white" />
+        <Feather name="menu" size={32} color="black" />
       </Pressable>
     </View>
   );

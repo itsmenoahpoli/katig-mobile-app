@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "expo-router";
 import { Animated, View, Pressable, Text } from "react-native";
 import Entypo from "@expo/vector-icons/Entypo";
 
@@ -8,6 +9,7 @@ type Props = {
 };
 
 export const HomeSidebar: React.FC<Props> = (props) => {
+  const router = useRouter();
   const widthAnim = React.useRef(new Animated.Value(0)).current;
 
   const animAttr = {
@@ -23,6 +25,10 @@ export const HomeSidebar: React.FC<Props> = (props) => {
       duration: 200,
       useNativeDriver: false,
     }).start();
+  };
+
+  const handleNavigate = (url: string) => {
+    router.push(url);
   };
 
   const getDisplayStyle = () => {
@@ -43,6 +49,12 @@ export const HomeSidebar: React.FC<Props> = (props) => {
           <Entypo name="arrow-left" size={24} color="darkblue" />
         </View>
       </Pressable>
+
+      <View className="h-full w-full mt-10 border-t">
+        <Pressable onPress={() => handleNavigate("/")}>
+          <Text>Log out</Text>
+        </Pressable>
+      </View>
     </Animated.View>
   );
 };
