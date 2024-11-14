@@ -1,5 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse, AxiosError, InternalAxiosRequestConfig } from "axios";
 import { APP_API_URL } from "@constants/index";
+import { handleApiError } from "./error-handler.api";
 
 const instance: AxiosInstance = axios.create({
   baseURL: APP_API_URL,
@@ -45,4 +46,4 @@ instance.interceptors.response.use(
   }
 );
 
-export { instance as httpClient };
+export { instance as httpClient, handleApiError };

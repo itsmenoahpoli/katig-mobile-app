@@ -1,8 +1,5 @@
-import { Notifier, NotifierComponents } from "react-native-notifier";
-import { AxiosError } from "axios";
 import { useRouter } from "expo-router";
-import { HTTP_RESPONSES } from "@constants/index";
-import { httpClient } from "@api/index";
+import { httpClient, handleApiError } from "@api/index";
 import { useAuthStore } from "@stores/index";
 import { alertNotify } from "@utils/index";
 import type { Credentials } from "@@types/auth";
@@ -19,7 +16,6 @@ export const useAuthService = () => {
     return await httpClient
       .post("auth/sign-in", credentials)
       .then((response) => {
-        console.log('success')
         const { token, user } = response.data;
         SET_TOKEN(token);
         SET_USER(user);
@@ -34,16 +30,7 @@ export const useAuthService = () => {
         }, 2000);
       })
       .catch((error) => {
-        console.log('error')
-
-        if (error instanceof AxiosError) {
-          if (error.response?.status === HTTP_RESPONSES.UNAUTHORIZED) {
-            alertNotify({
-              description: "Invalid email/password, try again",
-              alertType: "warn",
-            });
-          }
-        }
+        handleApiError(error);
       });
   };
 
@@ -51,10 +38,18 @@ export const useAuthService = () => {
     return await httpClient
       .post("auth/sign-up", payload)
       .then((response) => {
-        console.log(response);
+        console.log(response.status);
+        alertNotify({
+          description: "Successfully registered, please login",
+          alertType: "success",
+        });
+
+        setTimeout(() => {
+          router.push("/auth/signin");
+        }, 2000);
       })
       .catch((error) => {
-        console.log(error);
+        handleApiError(error);
       });
   };
 

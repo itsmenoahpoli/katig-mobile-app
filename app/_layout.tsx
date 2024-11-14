@@ -13,7 +13,7 @@ import { useLayout } from "@hooks/index";
 
 SplashScreen.hideAsync();
 
-export default function () {
+export default function (): JSX.Element {
   const { setBaseBackground, baseBackground } = useLayout();
 
   React.useEffect(() => {
