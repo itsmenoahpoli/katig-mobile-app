@@ -20,6 +20,7 @@ export default (): JSX.Element => {
       <View className="flex-1 pt-[70px]">
         <Slot />
       </View>
+
       <BottomNav />
     </View>
   );
