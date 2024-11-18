@@ -1,13 +1,33 @@
 import React from "react";
-import { View, ScrollView } from "react-native";
-import { HomeNavigation } from "@components/index";
+import { View, RefreshControl, ScrollView } from "react-native";
+import { HomeNavigation, PopularDestinationsSlider } from "@components/index";
 
 export default (): JSX.Element => {
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 1000);
+  };
+
   return (
-    <View className="flex-1 pt-10 px-4">
-      <ScrollView className="flex-1 flex-col gap-y-5">
-        <HomeNavigation />
-      </ScrollView>
-    </View>
+    <ScrollView
+      className="flex-1 p-4"
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+    >
+      <View className="flex flex-col space-y-4">
+        <View>
+          <HomeNavigation />
+        </View>
+
+        <View>
+          <PopularDestinationsSlider />
+        </View>
+      </View>
+    </ScrollView>
   );
 };

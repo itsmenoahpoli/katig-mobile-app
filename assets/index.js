@@ -6,4 +6,6 @@ export const imageAssets = {
   mapEye: require("./images/map-eye.png"),
   salbabida: require("./images/salbabida.png"),
   boat: require("./images/boat.png"),
+  destinationImg1: require("./images/destination-1.png"),
+  destinationImg2: require("./images/destination-2.png"),
 };

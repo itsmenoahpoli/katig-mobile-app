@@ -1,7 +1,7 @@
 import React from "react";
 import * as SplashScreen from "expo-splash-screen";
 import { NotifierWrapper } from "react-native-notifier";
-import { PanGestureHandler, GestureHandlerGestureEvent, GestureHandlerRootView } from "react-native-gesture-handler";
+// import { PanGestureHandler, GestureHandlerGestureEvent, GestureHandlerRootView } from "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
 import { usePathname, Slot } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -20,11 +20,6 @@ export default function (): JSX.Element {
     setBaseBackground("primary");
   }, []);
 
-  const onGestureEvent = (event: GestureHandlerGestureEvent) => {
-    return event;
-    // console.log("PanGesture event:", event.nativeEvent);
-  };
-
   const getContentClassname = () => {
     let classStr = "flex-1 ";
 
@@ -36,29 +31,48 @@ export default function (): JSX.Element {
   };
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <PanGestureHandler onGestureEvent={onGestureEvent}>
-        <SafeAreaView className={`flex-1 bg-${baseBackground}`}>
-          <NotifierWrapper>
-            <StatusBar style="light" />
-            <AppNetworkChecker />
+    <SafeAreaView className={`flex-1 bg-${baseBackground}`}>
+      <StatusBar style="light" />
+      <AppNetworkChecker />
 
-            <View className="flex-1 bg-white relative">
-              {!isOnSplashscreen ? (
-                <View className="w-full absolute top-0 z-10">
-                  <HeaderNav color="primary" />
-                </View>
-              ) : null}
+      <View className="flex-1 bg-white relative">
+        {!isOnSplashscreen ? (
+          <View className="w-full absolute top-0 z-10">
+            <HeaderNav color="primary" />
+          </View>
+        ) : null}
 
-              <View className={getContentClassname()}>
-                <Slot />
-              </View>
+        <View className={getContentClassname()}>
+          <Slot />
+        </View>
 
-              {!isOnSplashscreen ? <BottomNav /> : null}
-            </View>
-          </NotifierWrapper>
-        </SafeAreaView>
-      </PanGestureHandler>
-    </GestureHandlerRootView>
+        {!isOnSplashscreen ? <BottomNav /> : null}
+      </View>
+    </SafeAreaView>
   );
+  //   <GestureHandlerRootView style={{ flex: 1 }}>
+  //     <PanGestureHandler onGestureEvent={onGestureEvent}>
+  //       <SafeAreaView className={`flex-1 bg-${baseBackground}`}>
+  //         <NotifierWrapper>
+  //           <StatusBar style="light" />
+  //           <AppNetworkChecker />
+
+  //           <View className="flex-1 bg-white relative">
+  //             {!isOnSplashscreen ? (
+  //               <View className="w-full absolute top-0 z-10">
+  //                 <HeaderNav color="primary" />
+  //               </View>
+  //             ) : null}
+
+  //             <View className={getContentClassname()}>
+  //               <Slot />
+  //             </View>
+
+  //             {!isOnSplashscreen ? <BottomNav /> : null}
+  //           </View>
+  //         </NotifierWrapper>
+  //       </SafeAreaView>
+  //     </PanGestureHandler>
+  //   </GestureHandlerRootView>
+  // );
 }

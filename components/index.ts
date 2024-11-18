@@ -8,6 +8,7 @@ export { SignupForm } from "./screens/auth/SignupForm";
  * App components
  */
 export { AppNetworkChecker } from "./app/AppNetworkChecker";
+export { AppScrollview } from "./app/AppScrollview";
 
 /**
  * Navigation components

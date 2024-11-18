@@ -1,7 +1,6 @@
 import { useRouter } from "expo-router";
 import { httpClient, handleApiError } from "@api/index";
 import { useAuthStore } from "@stores/index";
-import { alertNotify } from "@utils/index";
 import type { Credentials } from "@@types/auth";
 
 export const useAuthService = () => {
@@ -20,11 +19,6 @@ export const useAuthService = () => {
         SET_TOKEN(token);
         SET_USER(user);
 
-        alertNotify({
-          description: "Successfully logged-in, redirecting ...",
-          alertType: "success",
-        });
-
         setTimeout(() => {
           router.push("/home/index");
         }, 2000);
@@ -38,12 +32,6 @@ export const useAuthService = () => {
     return await httpClient
       .post("auth/sign-up", payload)
       .then((response) => {
-        console.log(response.status);
-        alertNotify({
-          description: "Successfully registered, please login",
-          alertType: "success",
-        });
-
         setTimeout(() => {
           router.push("/auth/signin");
         }, 2000);
