@@ -3,7 +3,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { NotifierWrapper } from "react-native-notifier";
 import { PanGestureHandler, GestureHandlerGestureEvent, GestureHandlerRootView } from "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
-import { Slot } from "expo-router";
+import { usePathname, Slot } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { View } from "react-native";
 import { useLayout } from "@hooks/index";
@@ -12,7 +12,9 @@ import { AppNetworkChecker, HeaderNav, BottomNav } from "@components/index";
 SplashScreen.hideAsync();
 
 export default function (): JSX.Element {
-  const { setBaseBackground, baseBackground } = useLayout();
+  const pathname = usePathname();
+  const isOnSplashscreen = pathname === "/";
+  const { setBaseBackground, baseBackground, showHeaderNav } = useLayout();
 
   React.useEffect(() => {
     setBaseBackground("primary");
@@ -21,6 +23,16 @@ export default function (): JSX.Element {
   const onGestureEvent = (event: GestureHandlerGestureEvent) => {
     return event;
     // console.log("PanGesture event:", event.nativeEvent);
+  };
+
+  const getContentClassname = () => {
+    let classStr = "flex-1 ";
+
+    if (showHeaderNav && !isOnSplashscreen) {
+      classStr += "pt-[70px]";
+    }
+
+    return classStr;
   };
 
   return (
@@ -32,13 +44,17 @@ export default function (): JSX.Element {
             <AppNetworkChecker />
 
             <View className="flex-1 bg-white relative">
-              <View className="w-full absolute top-0 z-50">
-                <HeaderNav color="primary" />
+              {!isOnSplashscreen ? (
+                <View className="w-full absolute top-0 z-10">
+                  <HeaderNav color="primary" />
+                </View>
+              ) : null}
+
+              <View className={getContentClassname()}>
+                <Slot />
               </View>
 
-              <Slot />
-
-              <BottomNav />
+              {!isOnSplashscreen ? <BottomNav /> : null}
             </View>
           </NotifierWrapper>
         </SafeAreaView>

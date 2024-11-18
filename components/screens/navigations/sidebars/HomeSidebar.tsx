@@ -40,21 +40,14 @@ export const HomeSidebar: React.FC<Props> = (props) => {
   }, [props.isOpen]);
 
   return (
-    <Animated.View
-      className={`h-screen bg-secondary absolute top-0 bottom-0 left-0 z-50 pt-4 px-5 ${getDisplayStyle()}`}
-      style={[animAttr]}
-    >
+    <Animated.View className={`h-screen bg-secondary absolute top-0 bottom-0 left-0 z-50 pt-4 ${getDisplayStyle()}`} style={[animAttr]}>
       <Pressable onPress={props.onClose}>
-        <View className="h-[40px] w-[40px] flex justify-center items-center rounded-full bg-slate-300">
+        <View className="h-[40px] w-[40px] flex justify-center items-center rounded-full bg-slate-300 ml-5">
           <Entypo name="arrow-left" size={24} color="darkblue" />
         </View>
       </Pressable>
 
-      <View className="h-full w-full mt-10 border-t">
-        <Pressable onPress={() => handleNavigate("/")}>
-          <Text>Log out</Text>
-        </Pressable>
-      </View>
+      <View className="h-4/5 w-full bg-primary rounded-t-[50px] relative mt-auto"></View>
     </Animated.View>
   );
 };

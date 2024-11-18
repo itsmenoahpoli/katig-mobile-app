@@ -1,17 +1,13 @@
 import React from "react";
-import { useRouter } from "expo-router";
-import { Text, View } from "react-native";
+import { View, ScrollView } from "react-native";
+import { HomeNavigation } from "@components/index";
 
 export default (): JSX.Element => {
-  const router = useRouter();
-
-  React.useEffect(() => {
-    router.push("/user/emergency");
-  }, []);
-
   return (
-    <View className="flex-1 justify-center items-center">
-      <Text>Home Screen</Text>
+    <View className="flex-1 pt-10 px-4">
+      <ScrollView className="flex-1 flex-col gap-y-5">
+        <HomeNavigation />
+      </ScrollView>
     </View>
   );
 };

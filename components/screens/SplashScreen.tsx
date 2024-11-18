@@ -14,7 +14,7 @@ export const SplashScreen: React.FC = () => {
   }, []);
 
   return (
-    <View className="flex-1 items-center justify-center bg-primary relative">
+    <View className="flex-1 items-center justify-center bg-primary relative z-50">
       <View className="flex flex-col gap-y-2">
         <Image source={imageAssets.brandLogo} resizeMethod="resize" resizeMode="contain" className="h-[250px] w-[250px]" />
         <ActivityIndicator color="white" />

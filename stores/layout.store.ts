@@ -17,7 +17,7 @@ export const useLayoutStore = create<LayoutStore>()(
         set({ showHeaderNav: isShown });
       },
       SET_SHOW_BOTTOM_NAV: (isShown: boolean) => {
-        set({ showHeaderNav: isShown });
+        set({ showBottomNav: isShown });
       },
       RESET_BASE_COLOR: () => set({ baseBackground: "white" }),
     }),

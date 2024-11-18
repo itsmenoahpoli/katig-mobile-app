@@ -7,16 +7,20 @@ export { SignupForm } from "./screens/auth/SignupForm";
 /**
  * App components
  */
-export { AppNetworkChecker } from './app/AppNetworkChecker'
+export { AppNetworkChecker } from "./app/AppNetworkChecker";
 
 /**
  * Navigation components
  */
-export { HeaderNav } from './screens/navigations/HeaderNav'
-export { BottomNav } from './screens/navigations/BottomNav'
+export { HeaderNav } from "./screens/navigations/HeaderNav";
+export { BottomNav } from "./screens/navigations/BottomNav";
+
+/**
+ * Screens components
+ */
+export { HomeNavigation } from "./screens/app/user/HomeNavigation";
 
 /**
  * Utility components
  */
-
 export { SplashScreen } from "./screens/SplashScreen";
