@@ -19,6 +19,7 @@ export { BottomNav } from "./screens/navigations/BottomNav";
  * Screens components
  */
 export { HomeNavigation } from "./screens/app/user/HomeNavigation";
+export { PopularDestinationsSlider } from "./screens/app/user/PopularDestinationsSlider";
 
 /**
  * Utility components
