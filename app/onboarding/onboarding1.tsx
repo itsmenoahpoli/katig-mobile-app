@@ -2,13 +2,20 @@ import React from "react";
 import { useRouter } from "expo-router";
 import { View, Image, Text, Pressable } from "react-native";
 import { imageAssets } from "@assets/index";
+import { useToasts } from "@hooks/index";
+import { ToastTypes } from "@@types/store.d";
 
 export default (): JSX.Element => {
   const router = useRouter();
+  const { showToast } = useToasts();
 
   const handleNext = () => {
     router.push("/onboarding/onboarding2");
   };
+
+  React.useEffect(() => {
+    showToast("success message", ToastTypes.SUCCESS);
+  }, []);
 
   return (
     <View className="flex-1 justify-between items-center pb-[50px]">

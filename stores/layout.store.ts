@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { storage } from "@utils/index";
-import type { LayoutStore, BaseBackgroundColor } from "types/store";
+import type { LayoutStore, BaseBackgroundColor, ToastTypes } from "types/store";
 
 export const useLayoutStore = create<LayoutStore>()(
   persist(
@@ -9,6 +9,7 @@ export const useLayoutStore = create<LayoutStore>()(
       baseBackground: "primary",
       showHeaderNav: false,
       showBottomNav: false,
+      toast: { isVisible: false, message: "", type: "info" },
 
       SET_BASE_BACKGROUND: (color: BaseBackgroundColor) => {
         set({ baseBackground: color });
@@ -20,6 +21,8 @@ export const useLayoutStore = create<LayoutStore>()(
         set({ showBottomNav: isShown });
       },
       RESET_BASE_COLOR: () => set({ baseBackground: "white" }),
+      SHOW_TOAST: (message: string, type: ToastTypes) => set({ toast: { isVisible: true, message, type } }),
+      HIDE_TOAST: () => set({ toast: { isVisible: false, message: "", type: "info" } }),
     }),
     {
       name: "layout-store",
