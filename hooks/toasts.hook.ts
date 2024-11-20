@@ -1,5 +1,5 @@
 import { useLayoutStore } from "@stores/index";
-import type { ToastTypes } from "@@types/store";
+import type { ToastTypes } from "@@types/store.d";
 
 export const useToasts = () => {
   const { SHOW_TOAST, HIDE_TOAST } = useLayoutStore();

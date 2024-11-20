@@ -1,9 +1,23 @@
 import React from "react";
-import { View, Text, StyleSheet, Animated } from "react-native";
-import { useLayoutStore } from "@stores/index"; // Adjust path as needed
+import { Text, StyleSheet, Animated } from "react-native";
+import { useLayoutStore } from "@stores/index";
+import { ToastTypes } from "@@types/store.d";
 
 export const AppToast = () => {
   const { toast, HIDE_TOAST } = useLayoutStore();
+
+  const getToastStyle = (toastType: ToastTypes) => {
+    switch (toastType) {
+      case ToastTypes.SUCCESS:
+        return styles.success;
+
+      case ToastTypes.ERROR:
+        return styles.error;
+
+      default:
+        return {};
+    }
+  };
 
   React.useEffect(() => {
     if (toast.isVisible) {
@@ -13,7 +27,7 @@ export const AppToast = () => {
   }, [toast.isVisible, HIDE_TOAST]);
 
   return !toast.isVisible ? null : (
-    <Animated.View style={[styles.toastContainer, toast.type === "success" && styles.success, toast.type === "error" && styles.error]}>
+    <Animated.View style={[styles.toastContainer, getToastStyle(toast.type)]}>
       <Text style={styles.toastText}>{toast.message}</Text>
     </Animated.View>
   );
@@ -22,9 +36,9 @@ export const AppToast = () => {
 const styles = StyleSheet.create({
   toastContainer: {
     position: "absolute",
-    bottom: 20,
-    left: 20,
-    right: 20,
+    bottom: 0,
+    left: 0,
+    right: 0,
     padding: 15,
     borderRadius: 8,
     zIndex: 1000,

@@ -2,7 +2,7 @@ import { useRouter } from "expo-router";
 import { httpClient, handleApiError } from "@api/index";
 import { useAuthStore } from "@stores/index";
 import { ROUTES } from "@constants/index";
-import type { Credentials } from "@@types/auth";
+import type { Credentials } from "@@types/auth.d";
 
 export const useAuthService = () => {
   const router = useRouter();

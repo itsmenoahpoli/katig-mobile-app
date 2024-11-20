@@ -4,7 +4,7 @@ import { View, Text, TextInput, Pressable } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { useAuthService } from "@services/auth.service";
 import { alertNotify } from "@utils/index";
-import type { SignUpPayload } from "@@types/auth";
+import type { SignUpPayload } from "@@types/auth.d";
 
 export const SignupForm: React.FC = () => {
   const router = useRouter();
@@ -58,11 +58,7 @@ export const SignupForm: React.FC = () => {
             />
           )}
         />
-        {errors.fullname && (
-          <Text className="text-red-500">
-            {errors.fullname.message?.toString()}
-          </Text>
-        )}
+        {errors.fullname && <Text className="text-red-500">{errors.fullname.message?.toString()}</Text>}
       </View>
 
       <View>
@@ -87,9 +83,7 @@ export const SignupForm: React.FC = () => {
             />
           )}
         />
-        {errors.username && (
-          <Text className="text-red-500">{errors.username?.toString()}</Text>
-        )}
+        {errors.username && <Text className="text-red-500">{errors.username?.toString()}</Text>}
       </View>
 
       <View>
@@ -115,9 +109,7 @@ export const SignupForm: React.FC = () => {
             />
           )}
         />
-        {errors.email && (
-          <Text className="text-red-500">{errors.email?.toString()}</Text>
-        )}
+        {errors.email && <Text className="text-red-500">{errors.email?.toString()}</Text>}
       </View>
 
       <View>
@@ -143,9 +135,7 @@ export const SignupForm: React.FC = () => {
             />
           )}
         />
-        {errors.password && (
-          <Text className="text-red-500">{errors.password?.toString()}</Text>
-        )}
+        {errors.password && <Text className="text-red-500">{errors.password?.toString()}</Text>}
       </View>
 
       <View>
@@ -167,17 +157,10 @@ export const SignupForm: React.FC = () => {
             />
           )}
         />
-        {errors.confirmPassword && (
-          <Text className="text-red-500">
-            {errors.confirmPassword?.toString()}
-          </Text>
-        )}
+        {errors.confirmPassword && <Text className="text-red-500">{errors.confirmPassword?.toString()}</Text>}
       </View>
 
-      <Pressable
-        className="w-full flex items-center bg-[#fcfcfc] rounded-full py-2 px-3 mb-3"
-        onPress={handleSignup}
-      >
+      <Pressable className="w-full flex items-center bg-[#fcfcfc] rounded-full py-2 px-3 mb-3" onPress={handleSignup}>
         <Text className="text-lg font-medium">REGISTER</Text>
       </Pressable>
 

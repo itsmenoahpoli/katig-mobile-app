@@ -3,7 +3,7 @@ import { useRouter } from "expo-router";
 import { useForm, Controller } from "react-hook-form";
 import { View, Text, TextInput, Pressable } from "react-native";
 import { useAuthService } from "@services/index";
-import { Credentials } from "@@types/auth";
+import { Credentials } from "@@types/auth.d";
 
 export const SigninForm: React.FC = () => {
   const router = useRouter();
