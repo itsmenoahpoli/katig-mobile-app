@@ -1,14 +1,15 @@
 import React from "react";
 import { Slot } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { useLayoutStore } from "@stores/index";
-
+import { useLayout } from "@hooks/index";
 
 export default function () {
-  const { SET_BASE_BACKGROUND } = useLayoutStore();
+  const { setBaseBackground, setShowHeaderNav, setShowFooterNav } = useLayout();
 
   React.useEffect(() => {
-    SET_BASE_BACKGROUND("white");
+    setBaseBackground("white");
+    setShowHeaderNav(false);
+    setShowFooterNav(false);
   }, []);
 
   return (

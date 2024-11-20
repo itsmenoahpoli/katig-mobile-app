@@ -1,7 +1,8 @@
 import React from "react";
-import { useRouter } from "expo-router";
-import { Animated, View, Pressable, Text } from "react-native";
 import Entypo from "@expo/vector-icons/Entypo";
+import { useRouter } from "expo-router";
+import { Alert, Animated, View, Pressable, Text } from "react-native";
+import { ROUTES } from "@constants/index";
 
 type Props = {
   isOpen?: boolean;
@@ -31,6 +32,12 @@ export const HomeSidebar: React.FC<Props> = (props) => {
     router.push(url);
   };
 
+  const handleLogout = () => {
+    Alert.alert("You have successfully logged-out!");
+
+    router.push(ROUTES.AUTH_SIGNIN);
+  };
+
   const getDisplayStyle = () => {
     return props.isOpen ? "flex" : "hidden";
   };
@@ -47,7 +54,11 @@ export const HomeSidebar: React.FC<Props> = (props) => {
         </View>
       </Pressable>
 
-      <View className="h-4/5 w-full bg-primary rounded-t-[50px] relative mt-auto"></View>
+      <View className="h-4/5 w-full bg-primary rounded-t-[50px] relative mt-auto pt-[70px] px-5">
+        <Pressable className="w-full bg-red-500 rounded-xl p-3" onPress={handleLogout}>
+          <Text className="text-white font-bold">LOG OUT</Text>
+        </Pressable>
+      </View>
     </Animated.View>
   );
 };

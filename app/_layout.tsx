@@ -8,6 +8,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { View } from "react-native";
 import { useLayout } from "@hooks/index";
 import { AppNetworkChecker, HeaderNav, BottomNav } from "@components/index";
+import { ROUTES } from "@constants/index";
 
 SplashScreen.hideAsync();
 
@@ -46,33 +47,12 @@ export default function (): JSX.Element {
           <Slot />
         </View>
 
-        {!isOnSplashscreen ? <BottomNav /> : null}
+        {!isOnSplashscreen ? (
+          <View className="z-10">
+            <BottomNav />
+          </View>
+        ) : null}
       </View>
     </SafeAreaView>
   );
-  //   <GestureHandlerRootView style={{ flex: 1 }}>
-  //     <PanGestureHandler onGestureEvent={onGestureEvent}>
-  //       <SafeAreaView className={`flex-1 bg-${baseBackground}`}>
-  //         <NotifierWrapper>
-  //           <StatusBar style="light" />
-  //           <AppNetworkChecker />
-
-  //           <View className="flex-1 bg-white relative">
-  //             {!isOnSplashscreen ? (
-  //               <View className="w-full absolute top-0 z-10">
-  //                 <HeaderNav color="primary" />
-  //               </View>
-  //             ) : null}
-
-  //             <View className={getContentClassname()}>
-  //               <Slot />
-  //             </View>
-
-  //             {!isOnSplashscreen ? <BottomNav /> : null}
-  //           </View>
-  //         </NotifierWrapper>
-  //       </SafeAreaView>
-  //     </PanGestureHandler>
-  //   </GestureHandlerRootView>
-  // );
 }

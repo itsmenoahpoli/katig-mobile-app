@@ -1,6 +1,31 @@
 import { imageAssets } from "@assets/index";
 import React from "react";
-import { Text, View, Image, ScrollView } from "react-native";
+import { Text, View, Image, ScrollView, type ImageSourcePropType } from "react-native";
+
+type DestinationCardProps = {
+  title: string;
+  image: ImageSourcePropType;
+};
+
+const destinations: DestinationCardProps[] = [
+  {
+    title: "Maniyawa Island",
+    image: imageAssets.destinationImg1,
+  },
+  {
+    title: "Mongpong Island",
+    image: imageAssets.destinationImg2,
+  },
+];
+
+const DestinationCard: React.FC<DestinationCardProps> = (props) => {
+  return (
+    <View className="flex flex-col space-y-2 mr-5">
+      <Image source={props.image} className="h-[120px] w-[240px] rounded-xl" />
+      <Text className="text-md font-bold">{props.title}</Text>
+    </View>
+  );
+};
 
 export const PopularDestinationsSlider: React.FC = () => {
   return (
@@ -8,21 +33,10 @@ export const PopularDestinationsSlider: React.FC = () => {
       <Text className="text-lg font-bold">Popular Destinations</Text>
 
       <ScrollView showsHorizontalScrollIndicator={false} horizontal>
-        <View className="flex flex-row space-x-5">
-          <View className="flex flex-col space-y-2">
-            <Image
-              source={imageAssets.destinationImg1}
-              className="h-[120px] w-[240px] rounded-xl"
-            />
-            <Text className="font-bold">Maniyawa Island</Text>
-          </View>
-          <View className="flex flex-col space-y-2">
-            <Image
-              source={imageAssets.destinationImg2}
-              className="h-[120px] w-[240px] rounded-xl"
-            />
-            <Text className="font-bold">Mongpong Island</Text>
-          </View>
+        <View className="flex flex-row">
+          {destinations.map((destination: DestinationCardProps) => (
+            <DestinationCard key={destination.title} title={destination.title} image={destination.image} />
+          ))}
         </View>
       </ScrollView>
     </View>
