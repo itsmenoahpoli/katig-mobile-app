@@ -1,11 +1,15 @@
 import React from "react";
 import * as SplashScreen from "expo-splash-screen";
-import { StatusBar } from "expo-status-bar";
 import { usePathname, Slot } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { View } from "react-native";
+import { View, StatusBar } from "react-native";
 import { useLayout } from "@hooks/index";
-import { AppNetworkChecker, AppToast, HeaderNav, BottomNav } from "@components/index";
+import {
+  AppNetworkChecker,
+  AppToast,
+  HeaderNav,
+  BottomNav,
+} from "@components/index";
 
 SplashScreen.hideAsync();
 
@@ -22,7 +26,7 @@ export default function (): JSX.Element {
     let classStr = "flex-1 ";
 
     if (showHeaderNav && !isOnSplashscreen) {
-      classStr += "pt-[70px]";
+      classStr += "pt-[60px]";
     }
 
     return classStr;
@@ -30,7 +34,7 @@ export default function (): JSX.Element {
 
   return (
     <SafeAreaView className={`flex-1 bg-${baseBackground}`}>
-      <StatusBar style="light" />
+      <StatusBar barStyle="light-content" />
       <AppNetworkChecker />
       <AppToast />
 

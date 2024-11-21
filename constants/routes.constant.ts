@@ -6,6 +6,9 @@ export const ROUTES = {
   // ----------------------------------------------- //
   AUTH_SIGNIN: "/auth/signin",
   AUTH_SIGNUP: "/auth/signup",
+  AUTH_SIGNUP_SUCCESS: "/auth/signup-success",
+  ONBOARDING_1: "/onboarding/onboarding1",
+  ONBOARDING_2: "/onboarding/onboarding2",
   USER_BOOKINGS: "/user/bookings",
   USER_EMERGENCIES: "/user/emergency",
   USER_HOME: "/user/home",

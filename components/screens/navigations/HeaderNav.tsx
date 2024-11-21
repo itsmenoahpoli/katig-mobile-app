@@ -27,7 +27,9 @@ export const HeaderNav: React.FC<Props> = (props) => {
   return (
     <>
       <HomeSidebar isOpen={sidebarOpen} onClose={toggleSidebar} />
-      <View className={`w-full h-[70px] flex-row items-center bg-white rounded-b-2xl px-5 relative ${getBackgroundColor()}`}>
+      <View
+        className={`w-full h-[60px] flex-row items-center bg-white rounded-b-2xl px-5 relative ${getBackgroundColor()}`}
+      >
         <Pressable className="mr-3" onPress={toggleSidebar}>
           <Feather name="menu" size={24} color="white" />
         </Pressable>

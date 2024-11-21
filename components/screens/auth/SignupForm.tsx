@@ -19,9 +19,9 @@ export const SignupForm: React.FC = () => {
     formState: { errors },
   } = useForm<SignUpPayload>({
     defaultValues: {
-      fullname: "Patrick Policarpio",
-      username: "patrickpoli18",
-      email: "patrickpolicarpio08@gmail.com",
+      fullname: "John Doe 7",
+      username: "johndoe7",
+      email: "johndoe7@domain.com",
       password: "12345678",
       confirmPassword: "12345678",
     },
@@ -61,7 +61,9 @@ export const SignupForm: React.FC = () => {
             />
           )}
         />
-        {errors.fullname && <Text className="text-white">{errors.fullname?.message}</Text>}
+        {errors.fullname && (
+          <Text className="text-white">{errors.fullname?.message}</Text>
+        )}
       </View>
 
       <View>
@@ -86,7 +88,9 @@ export const SignupForm: React.FC = () => {
             />
           )}
         />
-        {errors.username && <Text className="text-white">{errors.username?.message}</Text>}
+        {errors.username && (
+          <Text className="text-white">{errors.username?.message}</Text>
+        )}
       </View>
 
       <View>
@@ -112,7 +116,9 @@ export const SignupForm: React.FC = () => {
             />
           )}
         />
-        {errors.email && <Text className="text-white">{errors.email?.message}</Text>}
+        {errors.email && (
+          <Text className="text-white">{errors.email?.message}</Text>
+        )}
       </View>
 
       <View>
@@ -131,6 +137,7 @@ export const SignupForm: React.FC = () => {
               className="w-full bg-white rounded-full p-4"
               placeholder="Password"
               autoCapitalize="none"
+              textContentType="none"
               secureTextEntry
               onChangeText={onChange}
               onBlur={onBlur}
@@ -138,7 +145,9 @@ export const SignupForm: React.FC = () => {
             />
           )}
         />
-        {errors.password && <Text className="text-white">{errors.password?.message}</Text>}
+        {errors.password && (
+          <Text className="text-white">{errors.password?.message}</Text>
+        )}
       </View>
 
       <View>
@@ -153,6 +162,7 @@ export const SignupForm: React.FC = () => {
               className="w-full bg-white rounded-full p-4 mb-3"
               placeholder="Confirm Password"
               autoCapitalize="none"
+              textContentType="none"
               secureTextEntry
               onChangeText={onChange}
               onBlur={onBlur}
@@ -160,11 +170,18 @@ export const SignupForm: React.FC = () => {
             />
           )}
         />
-        {errors.confirmPassword && <Text className="text-white">{errors.confirmPassword?.message}</Text>}
+        {errors.confirmPassword && (
+          <Text className="text-white">{errors.confirmPassword?.message}</Text>
+        )}
       </View>
 
-      <Pressable className="h-[45px] w-full flex justify-center items-center bg-[#fcfcfc] rounded-full px-3 mb-3" onPress={handleSignup}>
-        <Text className="text-lg font-medium">{loading ? <ActivityIndicator /> : "REGISTER"}</Text>
+      <Pressable
+        className="h-[45px] w-full flex justify-center items-center bg-[#fcfcfc] rounded-full px-3 mb-3"
+        onPress={handleSignup}
+      >
+        <Text className="text-lg font-medium">
+          {loading ? <ActivityIndicator /> : "REGISTER"}
+        </Text>
       </Pressable>
 
       <View className="flex flex-row justify-center items-center">

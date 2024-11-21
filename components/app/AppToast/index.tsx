@@ -10,7 +10,7 @@ export const AppToast = () => {
   const getToastStyle = (toastType: ToastTypes) => {
     switch (toastType) {
       case APP_TOAST_TYPES.SUCCESS:
-        return "!bg-green-700";
+        return "!bg-green-600";
 
       case APP_TOAST_TYPES.ERROR:
         return "!bg-red-600";
@@ -19,14 +19,17 @@ export const AppToast = () => {
         return "!bg-blue-900";
 
       case APP_TOAST_TYPES.WARNING:
-        return "!bg-red-600";
+        return "!bg-yellow-500";
 
       default:
         return {};
     }
   };
 
-  const checkToastVisibility = (isVisible: boolean, autoClose: boolean = true) => {
+  const checkToastVisibility = (
+    isVisible: boolean,
+    autoClose: boolean = true
+  ) => {
     if (isVisible && autoClose) {
       const timer = setTimeout(() => HIDE_TOAST(), 3000);
 
@@ -40,7 +43,9 @@ export const AppToast = () => {
 
   return !toast.isVisible ? null : (
     <Animated.View
-      className={`h-[130px] w-full absolute top-0 left-0 right-0 p-15 rounded-lg justify-end items-center z-50 pb-5 ${getToastStyle(toast.type)}`}
+      className={`h-[130px] w-full absolute top-0 left-0 right-0 p-15 rounded-2xl justify-end items-center z-50 pb-5 ${getToastStyle(
+        toast.type
+      )}`}
     >
       <Text className="text-md text-white font-bold">{toast.message}</Text>
     </Animated.View>

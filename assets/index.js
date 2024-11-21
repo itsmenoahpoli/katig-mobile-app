@@ -8,4 +8,5 @@ export const imageAssets = {
   boat: require("./images/boat.png"),
   destinationImg1: require("./images/destination-1.png"),
   destinationImg2: require("./images/destination-2.png"),
+  success: require("./images/success.png"),
 };

@@ -42,19 +42,22 @@ export const useAuthService = () => {
   const authSignup = async (payload: SignUpData) => {
     return await httpClient
       .post(ROUTES.API.AUTH_SIGNUP, payload)
-      .then((response) => {
-        showToast(STATIC_TEXTS.SUCCESFULLY_REGISTERED, toastTypes.SUCCESS);
-
-        setTimeout(async () => {
-          await authLogin({
+      .then(() => {
+        router.push({
+          pathname: ROUTES.AUTH_SIGNUP_SUCCESS,
+          params: {
             email: payload.email,
             password: payload.password,
-          });
-        }, 2000);
+          },
+        });
       })
       .catch((error) => {
         if (error instanceof AxiosError && error.response?.status === 400) {
-          showToast(STATIC_TEXTS.ALREADY_REGISTERED_ERROR, toastTypes.ERROR);
+          showToast(
+            STATIC_TEXTS.ALREADY_REGISTERED_ERROR,
+            toastTypes.ERROR,
+            true
+          );
         }
       });
   };

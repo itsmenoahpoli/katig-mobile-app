@@ -1,6 +1,12 @@
-import { imageAssets } from "@assets/index";
 import React from "react";
-import { Text, View, Image, ScrollView, type ImageSourcePropType } from "react-native";
+import {
+  Text,
+  View,
+  Image,
+  ScrollView,
+  type ImageSourcePropType,
+} from "react-native";
+import { imageAssets } from "@assets/index";
 
 type DestinationCardProps = {
   title: string;
@@ -35,7 +41,11 @@ export const PopularDestinationsSlider: React.FC = () => {
       <ScrollView showsHorizontalScrollIndicator={false} horizontal>
         <View className="flex flex-row">
           {destinations.map((destination: DestinationCardProps) => (
-            <DestinationCard key={destination.title} title={destination.title} image={destination.image} />
+            <DestinationCard
+              key={destination.title}
+              title={destination.title}
+              image={destination.image}
+            />
           ))}
         </View>
       </ScrollView>

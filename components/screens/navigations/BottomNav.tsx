@@ -10,7 +10,7 @@ type BottomNavItem = {
 };
 
 const ICON_COLOR = "#339AF0";
-const ICON_SIZE = 32;
+const ICON_SIZE = 28;
 
 const navItems: BottomNavItem[] = [
   {
@@ -18,15 +18,27 @@ const navItems: BottomNavItem[] = [
     url: "/user/home",
   },
   {
-    icon: <MaterialCommunityIcons name="notebook-outline" size={ICON_SIZE} color={ICON_COLOR} />,
+    icon: (
+      <MaterialCommunityIcons
+        name="notebook-outline"
+        size={ICON_SIZE}
+        color={ICON_COLOR}
+      />
+    ),
     url: "/user/bookings",
   },
   {
-    icon: <MaterialCommunityIcons name="bell-ring-outline" size={ICON_SIZE} color={ICON_COLOR} />,
+    icon: (
+      <MaterialCommunityIcons
+        name="bell-ring-outline"
+        size={ICON_SIZE}
+        color={ICON_COLOR}
+      />
+    ),
     url: "/user/notifications",
   },
   {
-    icon: <FontAwesome5 name="user" size={28} color={ICON_COLOR} />,
+    icon: <FontAwesome5 name="user" size={ICON_SIZE} color={ICON_COLOR} />,
     url: "/user/account",
   },
 ];
@@ -41,7 +53,7 @@ export const BottomNav: React.FC<Props> = (props) => {
   if (!showBottomNav) return <></>;
 
   return (
-    <View className="w-full h-[70px] flex flex-row justify-between items-center bg-slate-50 border-t border-gray-200 px-8">
+    <View className="w-full h-[50px] flex flex-row justify-between items-center bg-slate-50 border-t border-gray-200 px-8">
       {navItems.map((item: BottomNavItem) => (
         <Pressable key={item.url}>{item.icon}</Pressable>
       ))}

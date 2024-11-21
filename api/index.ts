@@ -1,9 +1,13 @@
-import axios, { AxiosInstance, AxiosResponse, AxiosError, InternalAxiosRequestConfig } from "axios";
-import { APP_API_URL } from "@constants/index";
+import axios, {
+  AxiosInstance,
+  AxiosResponse,
+  AxiosError,
+  InternalAxiosRequestConfig,
+} from "axios";
 import { handleApiError } from "./error-handler.api";
 
 const instance: AxiosInstance = axios.create({
-  baseURL: APP_API_URL,
+  baseURL: process.env.EXPO_PUBLIC_API_URL,
 });
 
 instance.interceptors.request.use(
@@ -35,6 +39,7 @@ instance.interceptors.response.use(
         console.error({
           message: "Error",
           description: "Server error occured!",
+          error,
         });
       }
     }
