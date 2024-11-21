@@ -1,7 +1,7 @@
 export const ROUTES = {
   API: {
-    AUTH_SIGNIN: "auth/signin",
-    AUTH_SIGNUP: "auth/signup",
+    AUTH_SIGNIN: "auth/sign-in",
+    AUTH_SIGNUP: "auth/sign-up",
   },
   // ----------------------------------------------- //
   AUTH_SIGNIN: "/auth/signin",

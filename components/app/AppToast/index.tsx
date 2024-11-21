@@ -1,6 +1,7 @@
 import React from "react";
-import { Text, StyleSheet, Animated } from "react-native";
+import { Text, Animated } from "react-native";
 import { useLayoutStore } from "@stores/index";
+import { APP_TOAST_TYPES } from "@constants/index";
 import { ToastTypes } from "@@types/store.d";
 
 export const AppToast = () => {
@@ -8,51 +9,40 @@ export const AppToast = () => {
 
   const getToastStyle = (toastType: ToastTypes) => {
     switch (toastType) {
-      case ToastTypes.SUCCESS:
-        return styles.success;
+      case APP_TOAST_TYPES.SUCCESS:
+        return "!bg-green-700";
 
-      case ToastTypes.ERROR:
-        return styles.error;
+      case APP_TOAST_TYPES.ERROR:
+        return "!bg-red-600";
+
+      case APP_TOAST_TYPES.INFO:
+        return "!bg-blue-900";
+
+      case APP_TOAST_TYPES.WARNING:
+        return "!bg-red-600";
 
       default:
         return {};
     }
   };
 
-  React.useEffect(() => {
-    if (toast.isVisible) {
+  const checkToastVisibility = (isVisible: boolean, autoClose: boolean = true) => {
+    if (isVisible && autoClose) {
       const timer = setTimeout(() => HIDE_TOAST(), 3000);
+
       return () => clearTimeout(timer);
     }
+  };
+
+  React.useEffect(() => {
+    checkToastVisibility(toast.isVisible, toast.autoClose);
   }, [toast.isVisible, HIDE_TOAST]);
 
   return !toast.isVisible ? null : (
-    <Animated.View style={[styles.toastContainer, getToastStyle(toast.type)]}>
-      <Text style={styles.toastText}>{toast.message}</Text>
+    <Animated.View
+      className={`h-[130px] w-full absolute top-0 left-0 right-0 p-15 rounded-lg justify-end items-center z-50 pb-5 ${getToastStyle(toast.type)}`}
+    >
+      <Text className="text-md text-white font-bold">{toast.message}</Text>
     </Animated.View>
   );
 };
-
-const styles = StyleSheet.create({
-  toastContainer: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    padding: 15,
-    borderRadius: 8,
-    zIndex: 1000,
-    backgroundColor: "gray",
-    alignItems: "center",
-  },
-  toastText: {
-    color: "white",
-    fontSize: 16,
-  },
-  success: {
-    backgroundColor: "green",
-  },
-  error: {
-    backgroundColor: "red",
-  },
-});

@@ -45,7 +45,7 @@ export const SigninForm: React.FC = () => {
             />
           )}
         />
-        {errors.email && <Text style={{ color: "red" }}>{errors.email.message}</Text>}
+        {errors.email && <Text className="text-sm text-white mt-1 ml-2">{errors.email.message}</Text>}
       </View>
 
       <View>
@@ -55,9 +55,10 @@ export const SigninForm: React.FC = () => {
           rules={{ required: "Password is required" }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
-              className="w-full bg-white rounded-full py-3 px-4 mb-3"
+              className="w-full bg-white rounded-full py-3 px-4"
               placeholder="Password"
               autoCapitalize="none"
+              textContentType="none"
               secureTextEntry
               onBlur={onBlur}
               onChangeText={onChange}
@@ -65,7 +66,7 @@ export const SigninForm: React.FC = () => {
             />
           )}
         />
-        {errors.password && <Text style={{ color: "red" }}>{errors.password.message}</Text>}
+        {errors.password && <Text className="text-sm text-white mt-1 ml-2">{errors.password.message}</Text>}
       </View>
 
       <View className="flex items-end mb-3">

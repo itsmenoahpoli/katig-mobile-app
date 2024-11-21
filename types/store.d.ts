@@ -1,3 +1,5 @@
+import { APP_TOAST_TYPES } from "@constants/index";
+
 export type AuthStore = {
   authUser: any | undefined;
   authToken: any | undefined;
@@ -11,12 +13,7 @@ export type AuthStore = {
 };
 
 export type BaseBackgroundColor = "primary" | "white";
-export enum ToastTypes {
-  SUCCESS = "success",
-  INFO = "info",
-  WARNING = "warning",
-  ERROR = "error",
-}
+export type ToastTypes = keyof typeof APP_TOAST_TYPES;
 
 export type LayoutStore = {
   baseBackground: string;
@@ -26,12 +23,13 @@ export type LayoutStore = {
     isVisible: boolean;
     message: string;
     type: ToastTypes;
+    autoClose?: boolean;
   };
 
   SET_BASE_BACKGROUND: (color: BaseBackgroundColor) => void;
   SET_SHOW_HEADER_NAV: (isShown: boolean) => void;
   SET_SHOW_BOTTOM_NAV: (isShown: boolean) => void;
   RESET_BASE_COLOR: () => void;
-  SHOW_TOAST: (message: string, type: ToastTypes) => void;
+  SHOW_TOAST: (message: string, type: ToastTypes, autoClose?: boolean) => void;
   HIDE_TOAST: () => void;
 };

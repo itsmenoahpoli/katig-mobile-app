@@ -14,8 +14,6 @@ instance.interceptors.request.use(
     config.headers["Accept"] = "application/json";
     config.headers["Content-Type"] = "application/json";
 
-    // console.info("[HTTP-REQUEST]", config);
-
     return config;
   },
   (error: AxiosError): Promise<AxiosError> => {
@@ -25,14 +23,13 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   (response: AxiosResponse): AxiosResponse => {
-    // console.log("[HTTP-RESPONSE]", response.data);
+    console.log("[HTTP Response]: ", response.data);
+
     return response;
   },
   (error: AxiosError): Promise<AxiosError> => {
     if (error.response) {
       const { status } = error.response;
-
-      // console.info("[HTTP-RESPONSE-ERROR]", error.response);
 
       if (status === 500) {
         console.error({

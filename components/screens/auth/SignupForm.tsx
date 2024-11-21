@@ -1,27 +1,30 @@
 import React from "react";
 import { useRouter } from "expo-router";
-import { View, Text, TextInput, Pressable } from "react-native";
+import { View, Text, TextInput, Pressable, ActivityIndicator } from "react-native";
 import { useForm, Controller } from "react-hook-form";
-import { useAuthService } from "@services/auth.service";
-import { alertNotify } from "@utils/index";
+import { useAuthService } from "@services/index";
+import { useToasts } from "@hooks/index";
 import type { SignUpPayload } from "@@types/auth.d";
 
 export const SignupForm: React.FC = () => {
   const router = useRouter();
   const { authSignup } = useAuthService();
+  const { showToast, toastTypes } = useToasts();
+
+  const [loading, setLoading] = React.useState<boolean>(false);
 
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm<SignUpPayload>({
-    // defaultValues: {
-    //   fullname: "Patrick Policarpio",
-    //   username: "patrickpoli18",
-    //   email: "patrickpolicarpio08@gmail.com",
-    //   password: "12345678",
-    //   confirmPassword: "1234522678",
-    // },
+    defaultValues: {
+      fullname: "Patrick Policarpio",
+      username: "patrickpoli18",
+      email: "patrickpolicarpio08@gmail.com",
+      password: "12345678",
+      confirmPassword: "12345678",
+    },
   });
 
   const handleGoToSignin = () => {
@@ -29,15 +32,15 @@ export const SignupForm: React.FC = () => {
   };
 
   const handleSignup = handleSubmit(async (formData) => {
+    setLoading(true);
+
     if (formData.password !== formData.confirmPassword) {
-      console.log("Passwords must match");
-      return alertNotify({
-        alertType: "warn",
-        description: "Passwords must match",
-      });
+      showToast("Passwords must match", toastTypes.ERROR);
+    } else {
+      await authSignup(formData);
     }
 
-    return await authSignup(formData);
+    setLoading(false);
   });
 
   return (
@@ -58,7 +61,7 @@ export const SignupForm: React.FC = () => {
             />
           )}
         />
-        {errors.fullname && <Text className="text-red-500">{errors.fullname.message?.toString()}</Text>}
+        {errors.fullname && <Text className="text-white">{errors.fullname?.message}</Text>}
       </View>
 
       <View>
@@ -83,7 +86,7 @@ export const SignupForm: React.FC = () => {
             />
           )}
         />
-        {errors.username && <Text className="text-red-500">{errors.username?.toString()}</Text>}
+        {errors.username && <Text className="text-white">{errors.username?.message}</Text>}
       </View>
 
       <View>
@@ -109,7 +112,7 @@ export const SignupForm: React.FC = () => {
             />
           )}
         />
-        {errors.email && <Text className="text-red-500">{errors.email?.toString()}</Text>}
+        {errors.email && <Text className="text-white">{errors.email?.message}</Text>}
       </View>
 
       <View>
@@ -135,7 +138,7 @@ export const SignupForm: React.FC = () => {
             />
           )}
         />
-        {errors.password && <Text className="text-red-500">{errors.password?.toString()}</Text>}
+        {errors.password && <Text className="text-white">{errors.password?.message}</Text>}
       </View>
 
       <View>
@@ -157,11 +160,11 @@ export const SignupForm: React.FC = () => {
             />
           )}
         />
-        {errors.confirmPassword && <Text className="text-red-500">{errors.confirmPassword?.toString()}</Text>}
+        {errors.confirmPassword && <Text className="text-white">{errors.confirmPassword?.message}</Text>}
       </View>
 
-      <Pressable className="w-full flex items-center bg-[#fcfcfc] rounded-full py-2 px-3 mb-3" onPress={handleSignup}>
-        <Text className="text-lg font-medium">REGISTER</Text>
+      <Pressable className="h-[45px] w-full flex justify-center items-center bg-[#fcfcfc] rounded-full px-3 mb-3" onPress={handleSignup}>
+        <Text className="text-lg font-medium">{loading ? <ActivityIndicator /> : "REGISTER"}</Text>
       </Pressable>
 
       <View className="flex flex-row justify-center items-center">

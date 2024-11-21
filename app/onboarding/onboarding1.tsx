@@ -1,26 +1,25 @@
 import React from "react";
 import { useRouter } from "expo-router";
 import { View, Image, Text, Pressable } from "react-native";
-import { imageAssets } from "@assets/index";
 import { useToasts } from "@hooks/index";
-import { ToastTypes } from "@@types/store.d";
+import { imageAssets } from "@assets/index";
 
 export default (): JSX.Element => {
   const router = useRouter();
-  const { showToast } = useToasts();
+  const { showToast, toastTypes } = useToasts();
 
   const handleNext = () => {
     router.push("/onboarding/onboarding2");
   };
 
   React.useEffect(() => {
-    showToast("success message", ToastTypes.SUCCESS);
+    showToast("Example message", toastTypes.INFO, false);
   }, []);
 
   return (
     <View className="flex-1 justify-between items-center pb-[50px]">
       <View className="h-full w-full flex flex-col justify-center items-center gap-y-5 px-10">
-        <Image source={imageAssets.onboardingBoat} resizeMethod="resize" resizeMode="contain" className="h-[300px] w-[300px]" />
+        <Image source={imageAssets.onboardingBoat} resizeMethod="resize" resizeMode="contain" className="h-[350px] w-[350px]" />
         <Text className="text-[30px] text-center text-dark font-bold mb-5">We schedule whenever trip you want</Text>
         <Text className="text-lg text-center text-dark mb-5">
           Book your ideal boat trip with us and choose the perfect time that fits your schedule
