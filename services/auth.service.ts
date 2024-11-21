@@ -6,6 +6,10 @@ import { useToasts } from "@hooks/index";
 import { ROUTES, STATIC_TEXTS } from "@constants/index";
 import type { Credentials } from "@@types/auth.d";
 
+type SignUpData = {
+  fullname: string;
+} & Credentials;
+
 export const useAuthService = () => {
   const router = useRouter();
   const { showToast, toastTypes } = useToasts();
@@ -35,14 +39,17 @@ export const useAuthService = () => {
       });
   };
 
-  const authSignup = async (payload: any) => {
+  const authSignup = async (payload: SignUpData) => {
     return await httpClient
       .post(ROUTES.API.AUTH_SIGNUP, payload)
       .then((response) => {
         showToast(STATIC_TEXTS.SUCCESFULLY_REGISTERED, toastTypes.SUCCESS);
 
-        setTimeout(() => {
-          router.push(ROUTES.AUTH_SIGNIN);
+        setTimeout(async () => {
+          await authLogin({
+            email: payload.email,
+            password: payload.password,
+          });
         }, 2000);
       })
       .catch((error) => {
