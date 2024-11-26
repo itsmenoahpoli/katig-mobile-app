@@ -12,8 +12,8 @@ export default (): JSX.Element => {
     setTimeout(async () => {
       if (email && password) {
         await authLogin({
-          email: email.toString(),
-          password: password.toString(),
+          email: email as string,
+          password: password as string,
         });
       }
     }, 2000);
@@ -21,14 +21,9 @@ export default (): JSX.Element => {
 
   return (
     <View className="flex-1 items-center justify-center space-y-2">
-      <Image
-        source={imageAssets.success}
-        className="h-[150px] w-[150px] mb-5"
-      />
+      <Image source={imageAssets.success} className="h-[150px] w-[150px] mb-5" />
       <Text className="text-2xl text-green-900 font-extrabold">Hooray!</Text>
-      <Text className="text-lg text-gray-500 mb-4">
-        You have successfully registered
-      </Text>
+      <Text className="text-lg text-gray-500 mb-4">You have successfully registered</Text>
       <ActivityIndicator />
       <Text className="text-xs text-gray-400">Redirecting to home page</Text>
     </View>
