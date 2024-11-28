@@ -4,11 +4,7 @@ import { httpClient } from "@api/index";
 import { useAuthStore } from "@stores/index";
 import { useToasts } from "@hooks/index";
 import { ROUTES, STATIC_TEXTS } from "@constants/index";
-import type { Credentials } from "@@types/auth.d";
-
-type SignUpData = {
-  fullname: string;
-} & Credentials;
+import type { Credentials, SignUpPayload } from "@@types/auth.d";
 
 export const useAuthService = () => {
   const router = useRouter();
@@ -39,7 +35,7 @@ export const useAuthService = () => {
       });
   };
 
-  const authSignup = async (payload: SignUpData) => {
+  const authSignup = async (payload: SignUpPayload) => {
     return await httpClient
       .post(ROUTES.API.AUTH_SIGNUP, payload)
       .then(() => {
@@ -53,11 +49,7 @@ export const useAuthService = () => {
       })
       .catch((error) => {
         if (error instanceof AxiosError && error.response?.status === 400) {
-          showToast(
-            STATIC_TEXTS.ALREADY_REGISTERED_ERROR,
-            toastTypes.ERROR,
-            true
-          );
+          showToast(STATIC_TEXTS.ALREADY_REGISTERED_ERROR, toastTypes.ERROR, true);
         }
       });
   };
