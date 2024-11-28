@@ -18,23 +18,11 @@ const navItems: BottomNavItem[] = [
     url: "/user/home",
   },
   {
-    icon: (
-      <MaterialCommunityIcons
-        name="notebook-outline"
-        size={ICON_SIZE}
-        color={ICON_COLOR}
-      />
-    ),
+    icon: <MaterialCommunityIcons name="notebook-outline" size={ICON_SIZE} color={ICON_COLOR} />,
     url: "/user/bookings",
   },
   {
-    icon: (
-      <MaterialCommunityIcons
-        name="bell-ring-outline"
-        size={ICON_SIZE}
-        color={ICON_COLOR}
-      />
-    ),
+    icon: <MaterialCommunityIcons name="bell-ring-outline" size={ICON_SIZE} color={ICON_COLOR} />,
     url: "/user/notifications",
   },
   {

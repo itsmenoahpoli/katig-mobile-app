@@ -11,23 +11,20 @@ export const SplashScreen: React.FC = () => {
 
   React.useEffect(() => {
     setTimeout(() => {
-      if (IS_AUTHENTICATED) {
-        router.push(ROUTES.USER_HOME);
-      } else {
-        router.push(ROUTES.AUTH_SIGNIN);
-      }
-    }, 3000);
+      router.push(ROUTES.USER_EMERGENCIES);
+
+      // if (IS_AUTHENTICATED) {
+      //   router.push(ROUTES.USER_HOME);
+      // } else {
+      //   router.push(ROUTES.AUTH_SIGNIN);
+      // }
+    }, 300);
   }, []);
 
   return (
     <View className="flex-1 items-center justify-center bg-primary relative z-50">
       <View className="flex flex-col gap-y-2">
-        <Image
-          source={imageAssets.brandLogo}
-          resizeMethod="resize"
-          resizeMode="contain"
-          className="h-[250px] w-[250px]"
-        />
+        <Image source={imageAssets.brandLogo} resizeMethod="resize" resizeMode="contain" className="h-[250px] w-[250px]" />
         <ActivityIndicator color="white" />
       </View>
       <View className="absolute bottom-8">

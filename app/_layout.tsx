@@ -4,12 +4,7 @@ import { usePathname, Slot } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { View, StatusBar } from "react-native";
 import { useLayout } from "@hooks/index";
-import {
-  AppNetworkChecker,
-  AppToast,
-  HeaderNav,
-  BottomNav,
-} from "@components/index";
+import { AppNetworkChecker, AppToast, HeaderNav, BottomNav } from "@components/index";
 
 SplashScreen.hideAsync();
 
@@ -50,7 +45,7 @@ export default function (): JSX.Element {
         </View>
 
         {!isOnSplashscreen ? (
-          <View className="z-10">
+          <View className="z-1">
             <BottomNav />
           </View>
         ) : null}

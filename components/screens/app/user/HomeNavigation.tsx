@@ -15,10 +15,10 @@ export const HomeNavigation: React.FC = () => {
   return (
     <View className="flex flex-col space-y-4">
       <Pressable onPress={() => handleRedirect(ROUTES.USER_BOOKINGS)}>
-        <View className="h-[200px] w-full flex flex-row bg-red-500 border border-gray-200 rounded-xl p-4">
+        <View className="h-[200px] w-full flex flex-row bg-tertiary border border-gray-200 rounded-xl p-4">
           <View className="flex justify-center pr-4">
-            <Text className="text-xl text-white font-bold">Booking & Schedule</Text>
-            <Text className=" text-xs text-gray-100">Book your trip</Text>
+            <Text className="text-xl text-black font-bold">Booking & Schedule</Text>
+            <Text className=" text-xs text-gray-800">Book your trip</Text>
           </View>
           <View className="flex justify-center items-end mb-3">
             <Image source={imageAssets.boat} className="h-[150px] w-[150px]" />

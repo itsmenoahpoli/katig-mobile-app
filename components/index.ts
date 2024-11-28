@@ -11,6 +11,11 @@ export { AppNetworkChecker } from "./app/AppNetworkChecker";
 export { AppToast } from "./app/AppToast";
 
 /**
+ * Emergency components
+ */
+export { EmergencyCard } from "./screens/app/emergencies/EmergencyCard";
+
+/**
  * Navigation components
  */
 export { HeaderNav } from "./screens/navigations/HeaderNav";

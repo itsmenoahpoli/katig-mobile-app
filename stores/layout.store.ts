@@ -10,6 +10,7 @@ export const useLayoutStore = create<LayoutStore>()(
       baseBackground: "primary",
       showHeaderNav: false,
       showBottomNav: false,
+      headerAttr: { showCustom: false, title: "" },
       toast: { isVisible: false, message: "", type: APP_TOAST_TYPES.INFO, autoClose: false },
 
       SET_BASE_BACKGROUND: (color: BaseBackgroundColor) => {

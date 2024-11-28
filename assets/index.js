@@ -9,4 +9,5 @@ export const imageAssets = {
   destinationImg1: require("./images/destination-1.png"),
   destinationImg2: require("./images/destination-2.png"),
   success: require("./images/success.png"),
+  emergenciesBg: require("./images/emergencies-bg.png"),
 };
