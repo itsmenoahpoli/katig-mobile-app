@@ -11,14 +11,14 @@ export const SplashScreen: React.FC = () => {
 
   React.useEffect(() => {
     setTimeout(() => {
-      router.push(ROUTES.USER_EMERGENCIES);
+      // router.push(ROUTES.USER_EMERGENCIES);
 
-      // if (IS_AUTHENTICATED) {
-      //   router.push(ROUTES.USER_HOME);
-      // } else {
-      //   router.push(ROUTES.AUTH_SIGNIN);
-      // }
-    }, 300);
+      if (IS_AUTHENTICATED) {
+        router.push(ROUTES.USER_HOME);
+      } else {
+        router.push(ROUTES.AUTH_SIGNIN);
+      }
+    }, 3000);
   }, []);
 
   return (
