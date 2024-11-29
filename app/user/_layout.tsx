@@ -7,6 +7,15 @@ export default (): JSX.Element => {
   const pathname = usePathname();
   const { setBaseBackground, setShowHeaderNav, setShowFooterNav } = useLayout();
 
+  const checkRoutesForHeader = () => {
+    const routesWithoutFooter = [ROUTES.USER_CREATE_BOOKING];
+    if (routesWithoutFooter.some((route) => pathname.includes(route))) {
+      setShowHeaderNav(false);
+    } else {
+      setShowHeaderNav(true);
+    }
+  };
+
   const checkRoutesForFooter = () => {
     const routesWithoutFooter = [ROUTES.USER_EMERGENCIES, ROUTES.USER_RATE_US];
     if (routesWithoutFooter.some((route) => pathname.includes(route))) {
@@ -17,10 +26,7 @@ export default (): JSX.Element => {
   };
 
   React.useEffect(() => {
-    setBaseBackground("primary");
-    setShowHeaderNav(true);
-    setShowFooterNav(true);
-
+    checkRoutesForHeader();
     checkRoutesForFooter();
   }, []);
 

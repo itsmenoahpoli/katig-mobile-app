@@ -41,7 +41,7 @@ export const BottomNav: React.FC<Props> = (props) => {
   if (!showBottomNav) return <></>;
 
   return (
-    <View className="w-full h-[50px] flex flex-row justify-between items-center bg-slate-50 border-t border-gray-200 px-8">
+    <View className="w-full h-[50px] flex flex-row justify-between items-center bg-slate-50 px-8">
       {navItems.map((item: BottomNavItem) => (
         <Pressable key={item.url}>{item.icon}</Pressable>
       ))}

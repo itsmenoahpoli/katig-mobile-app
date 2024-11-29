@@ -9,7 +9,7 @@ export const ROUTES = {
   AUTH_SIGNUP_SUCCESS: "/auth/signup-success",
   ONBOARDING_1: "/onboarding/onboarding1",
   ONBOARDING_2: "/onboarding/onboarding2",
-  USER_BOOKINGS: "/user/bookings",
+  USER_CREATE_BOOKING: "/user/booking/create-booking",
   USER_EMERGENCIES: "/user/emergency",
   USER_HOME: "/user/home",
   USER_RATE_US: "/user/rate-us",
