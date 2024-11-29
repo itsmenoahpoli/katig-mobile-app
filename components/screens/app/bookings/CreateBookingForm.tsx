@@ -28,6 +28,8 @@ export const CreateBookingForm: React.FC<Props> = (props) => {
   const [datepickerOpen, setDatepickerOpen] = React.useState<boolean>(false);
   const [passengersOpen, setPassengersOpen] = React.useState<boolean>(true);
 
+  // TODO: add modal for setting passengers
+
   const getToLocations = () => {
     return locations.filter((location) => location.value !== fromValue);
   };
