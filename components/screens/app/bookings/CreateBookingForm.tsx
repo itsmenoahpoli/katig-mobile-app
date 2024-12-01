@@ -4,7 +4,7 @@ import DateTimePicker, {
 } from "@react-native-community/datetimepicker";
 import { Picker } from "@react-native-picker/picker";
 import { useForm } from "react-hook-form";
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, StyleSheet } from "react-native";
 import type { CreateBookingData } from "@@types/booking";
 
 type Props = {
@@ -17,6 +17,12 @@ const locationsOptions = [
   { label: "Mongpong", value: "mongpong" },
   { label: "Buyabod", value: "buyabod" },
 ];
+
+const pickerStyle = StyleSheet.create({
+  picker: {
+    fontSize: 13,
+  },
+});
 
 export const CreateBookingForm: React.FC<Props> = (props) => {
   const {
@@ -82,12 +88,18 @@ export const CreateBookingForm: React.FC<Props> = (props) => {
             <View className="px-3">
               <Picker
                 selectedValue={""}
+                style={pickerStyle.picker}
                 onValueChange={(itemValue) =>
                   handleSetLocation("from", itemValue)
                 }
               >
                 {locationsOptions.map((location) => (
-                  <Picker.Item label={location.label} value={location.value} />
+                  <Picker.Item
+                    style={pickerStyle.picker}
+                    key={location.value}
+                    label={location.label}
+                    value={location.value}
+                  />
                 ))}
               </Picker>
             </View>

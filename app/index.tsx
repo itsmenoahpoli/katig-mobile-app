@@ -11,7 +11,7 @@ export default (): JSX.Element => {
         body: "This is a local notification.",
       },
       trigger: {
-        seconds: 2, // Time in seconds after which the notification will appear
+        seconds: 1,
       },
     });
   };
@@ -27,8 +27,15 @@ export default (): JSX.Element => {
       }
     };
 
+    const checkPermissions = async () => {
+      const permissions = await Notifications.getPermissionsAsync();
+      console.log("Current permissions:", permissions);
+    };
+
     // Request permissions on component mount
     requestPermissions();
+
+    checkPermissions();
 
     // Listen for incoming notifications
     const notificationListener = Notifications.addNotificationReceivedListener(
@@ -40,7 +47,10 @@ export default (): JSX.Element => {
 
     const responseListener =
       Notifications.addNotificationResponseReceivedListener((response) => {
+        const { notification, actionIdentifier } = response;
         console.log("Notification response received:", response);
+        console.log("Notification data:", notification);
+        console.log("Action identifier:", actionIdentifier);
         // Handle the response (e.g., navigate to a screen)
       });
 
@@ -58,6 +68,4 @@ export default (): JSX.Element => {
       </Pressable>
     </View>
   );
-
-  // return <SplashScreen />;
 };
