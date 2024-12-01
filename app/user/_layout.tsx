@@ -5,10 +5,11 @@ import { ROUTES } from "@constants/index";
 
 export default (): JSX.Element => {
   const pathname = usePathname();
-  const { setBaseBackground, setShowHeaderNav, setShowFooterNav } = useLayout();
+  const { setShowHeaderNav, setShowFooterNav } = useLayout();
 
   const checkRoutesForHeader = () => {
     const routesWithoutFooter = [ROUTES.USER_CREATE_BOOKING];
+
     if (routesWithoutFooter.some((route) => pathname.includes(route))) {
       setShowHeaderNav(false);
     } else {
@@ -28,7 +29,7 @@ export default (): JSX.Element => {
   React.useEffect(() => {
     checkRoutesForHeader();
     checkRoutesForFooter();
-  }, []);
+  }, [pathname]);
 
   return <Slot />;
 };

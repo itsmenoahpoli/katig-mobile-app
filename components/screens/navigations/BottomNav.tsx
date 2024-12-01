@@ -1,7 +1,13 @@
 import React from "react";
-import { Feather, FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
+import {
+  Feather,
+  FontAwesome5,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 import { View, Pressable } from "react-native";
 import { useLayout } from "@hooks/index";
+import { ROUTES } from "@constants/index";
 
 type Props = {};
 type BottomNavItem = {
@@ -15,14 +21,26 @@ const ICON_SIZE = 28;
 const navItems: BottomNavItem[] = [
   {
     icon: <Feather name="home" size={ICON_SIZE} color={ICON_COLOR} />,
-    url: "/user/home",
+    url: ROUTES.USER_HOME,
   },
   {
-    icon: <MaterialCommunityIcons name="notebook-outline" size={ICON_SIZE} color={ICON_COLOR} />,
-    url: "/user/bookings",
+    icon: (
+      <MaterialCommunityIcons
+        name="notebook-outline"
+        size={ICON_SIZE}
+        color={ICON_COLOR}
+      />
+    ),
+    url: ROUTES.USER_CREATE_BOOKING,
   },
   {
-    icon: <MaterialCommunityIcons name="bell-ring-outline" size={ICON_SIZE} color={ICON_COLOR} />,
+    icon: (
+      <MaterialCommunityIcons
+        name="bell-ring-outline"
+        size={ICON_SIZE}
+        color={ICON_COLOR}
+      />
+    ),
     url: "/user/notifications",
   },
   {
@@ -32,10 +50,11 @@ const navItems: BottomNavItem[] = [
 ];
 
 export const BottomNav: React.FC<Props> = (props) => {
+  const router = useRouter();
   const { showBottomNav } = useLayout();
 
   const handleRedirect = (url: string) => {
-    //
+    router.push(url);
   };
 
   if (!showBottomNav) return <></>;
@@ -43,7 +62,9 @@ export const BottomNav: React.FC<Props> = (props) => {
   return (
     <View className="w-full h-[50px] flex flex-row justify-between items-center bg-slate-50 px-8">
       {navItems.map((item: BottomNavItem) => (
-        <Pressable key={item.url}>{item.icon}</Pressable>
+        <Pressable key={item.url} onPress={() => handleRedirect(item.url)}>
+          {item.icon}
+        </Pressable>
       ))}
     </View>
   );
