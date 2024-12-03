@@ -1,7 +1,6 @@
 import React from "react";
 import { useRouter } from "expo-router";
 import { View, Text, Pressable, ScrollView } from "react-native";
-import { TripInformationCard, PaymentProceedFooter } from "@components/index";
 
 export default (): JSX.Element => {
   const router = useRouter();
@@ -27,7 +26,9 @@ export default (): JSX.Element => {
           </Pressable>
         </View>
 
-        <Text className="text-xl text-white mt-10">Terms and Conditions</Text>
+        <Text className="text-xl text-white font-bold mt-5">
+          Terms and Conditions
+        </Text>
 
         <View className="h-4/5 w-full bg-white rounded-xl border border-gray-200 mt-3 mx-auto p-5">
           <ScrollView className="flex-1 flex-col space-y-2">
@@ -122,8 +123,6 @@ export default (): JSX.Element => {
           </ScrollView>
         </View>
       </View>
-
-      <PaymentProceedFooter price={750} />
     </View>
   );
 };
