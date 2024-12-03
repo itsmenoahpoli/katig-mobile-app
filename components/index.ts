@@ -19,6 +19,8 @@ export { EmergencyCard } from "./screens/app/emergencies/EmergencyCard";
  * Booking components
  */
 export { CreateBookingForm } from "./screens/app/bookings/CreateBookingForm";
+export { PaymentProceedFooter } from "./screens/app/bookings/PaymentProceedFooter";
+export { TripInformationCard } from "./screens/app/bookings/TripInformationCard";
 
 /**
  * Navigation components

@@ -8,9 +8,12 @@ export default (): JSX.Element => {
   const { setShowHeaderNav, setShowFooterNav } = useLayout();
 
   const checkRoutesForHeader = () => {
-    const routesWithoutFooter = [ROUTES.USER_CREATE_BOOKING];
+    const routesWithoutHeader = [
+      ROUTES.USER_CREATE_BOOKING,
+      ROUTES.USER_SELECT_BOOKING_ROUTE,
+    ];
 
-    if (routesWithoutFooter.some((route) => pathname.includes(route))) {
+    if (routesWithoutHeader.some((route) => pathname.includes(route))) {
       setShowHeaderNav(false);
     } else {
       setShowHeaderNav(true);
@@ -18,7 +21,12 @@ export default (): JSX.Element => {
   };
 
   const checkRoutesForFooter = () => {
-    const routesWithoutFooter = [ROUTES.USER_EMERGENCIES, ROUTES.USER_RATE_US];
+    const routesWithoutFooter = [
+      ROUTES.USER_EMERGENCIES,
+      ROUTES.USER_RATE_US,
+      ROUTES.USER_SELECT_BOOKING_ROUTE,
+    ];
+    
     if (routesWithoutFooter.some((route) => pathname.includes(route))) {
       setShowFooterNav(false);
     } else {

@@ -47,16 +47,31 @@ export const HomeSidebar: React.FC<Props> = (props) => {
   }, [props.isOpen]);
 
   return (
-    <Animated.View className={`h-screen bg-secondary absolute top-0 bottom-0 left-0 z-50 pt-4 ${getDisplayStyle()}`} style={[animAttr]}>
+    <Animated.View
+      className={`h-screen bg-secondary absolute top-0 bottom-0 left-0 z-50 pt-4 ${getDisplayStyle()}`}
+      style={[animAttr]}
+    >
       <Pressable onPress={props.onClose}>
         <View className="h-[40px] w-[40px] flex justify-center items-center rounded-full bg-slate-300 ml-5">
           <Entypo name="arrow-left" size={24} color="darkblue" />
         </View>
       </Pressable>
 
-      <View className="h-4/5 w-full bg-primary rounded-t-[50px] relative mt-auto pt-[70px] px-5">
-        <Pressable className="w-full bg-red-500 rounded-xl p-3" onPress={handleLogout}>
-          <Text className="text-white font-bold">LOG OUT</Text>
+      <View className="h-4/5 w-full flex flex-col space-y-3 bg-primary relative mt-auto pt-[70px] px-5">
+        <Pressable className="w-full">
+          <Text className="text-white font-bold">HOME OVERVIEW</Text>
+        </Pressable>
+        <Pressable className="w-full">
+          <Text className="text-white font-bold">TERMS & CONDITIONS</Text>
+        </Pressable>
+        <Pressable className="w-full">
+          <Text className="text-white font-bold">PRIVACY & POLICY</Text>
+        </Pressable>
+        <Pressable className="w-full">
+          <Text className="text-white font-bold">HELP</Text>
+        </Pressable>
+        <Pressable className="w-full" onPress={handleLogout}>
+          <Text className="text-red-300 font-bold">LOG OUT</Text>
         </Pressable>
       </View>
     </Animated.View>

@@ -11,7 +11,8 @@ export const SplashScreen: React.FC = () => {
 
   React.useEffect(() => {
     setTimeout(() => {
-      // router.push(ROUTES.USER_CREATE_BOOKING);
+      router.push(ROUTES.USER_TERMS_CONDITIONS);
+
       // if (IS_AUTHENTICATED) {
       //   router.push(ROUTES.USER_HOME);
       // } else {

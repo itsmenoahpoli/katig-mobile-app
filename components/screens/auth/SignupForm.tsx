@@ -18,13 +18,13 @@ export const SignupForm: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<SignUpPayload>({
-    defaultValues: {
-      fullname: "John Doe 7",
-      username: "johndoe7",
-      email: "johndoe7@domain.com",
-      password: "12345678",
-      confirmPassword: "12345678",
-    },
+    // defaultValues: {
+    //   fullname: "John Doe 7",
+    //   username: "johndoe7",
+    //   email: "johndoe7@domain.com",
+    //   password: "12345678",
+    //   confirmPassword: "12345678",
+    // },
   });
 
   const handleGoToSignin = () => {

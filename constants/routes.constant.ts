@@ -10,6 +10,8 @@ export const ROUTES = {
   ONBOARDING_1: "/onboarding/onboarding1",
   ONBOARDING_2: "/onboarding/onboarding2",
   USER_CREATE_BOOKING: "/user/booking/create-booking",
+  USER_SELECT_BOOKING_ROUTE: "/user/booking/select-booking-route",
+  USER_TERMS_CONDITIONS: "/user/booking/terms-and-conditions",
   USER_EMERGENCIES: "/user/emergency",
   USER_HOME: "/user/home",
   USER_RATE_US: "/user/rate-us",

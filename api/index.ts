@@ -7,7 +7,7 @@ import axios, {
 import { handleApiError } from "./error-handler.api";
 
 const instance: AxiosInstance = axios.create({
-  baseURL: process.env.EXPO_PUBLIC_API_URL,
+  baseURL: "https://katig-server-production.up.railway.app/api/v1/",
 });
 
 instance.interceptors.request.use(
