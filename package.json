@@ -36,7 +36,8 @@
     "zustand": "^5.0.0",
     "@react-native-picker/picker": "2.7.5",
     "expo-notifications": "~0.28.19",
-    "expo-device": "~6.0.2"
+    "expo-device": "~6.0.2",
+    "react-native-webview": "13.8.6"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
