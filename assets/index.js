@@ -10,4 +10,5 @@ export const imageAssets = {
   destinationImg2: require("./images/destination-2.png"),
   success: require("./images/success.png"),
   emergenciesBg: require("./images/emergencies-bg.png"),
+  paymongoLogo: require("./images/paymongo-logo.png"),
 };

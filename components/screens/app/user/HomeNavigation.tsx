@@ -23,7 +23,7 @@ export const HomeNavigation: React.FC = () => {
             <Text className=" text-xs text-gray-800">Book your trip</Text>
           </View>
           <View className="flex justify-center items-end mb-3">
-            <Image source={imageAssets.boat} className="h-[150px] w-[150px]" />
+            <Image source={imageAssets.boat} className="h-[100px] w-[100px]" />
           </View>
         </View>
       </Pressable>
@@ -35,7 +35,7 @@ export const HomeNavigation: React.FC = () => {
               <View className="flex justify-center items-center mb-1">
                 <Image
                   source={imageAssets.mapEye}
-                  className="h-[120px] w-[120px]"
+                  className="h-[100px] w-[100px]"
                 />
               </View>
               <View>

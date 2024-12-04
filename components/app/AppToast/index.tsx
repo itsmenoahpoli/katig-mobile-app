@@ -16,7 +16,7 @@ export const AppToast = () => {
         return "!bg-red-600";
 
       case APP_TOAST_TYPES.INFO:
-        return "!bg-blue-900";
+        return "!bg-blue-400";
 
       case APP_TOAST_TYPES.WARNING:
         return "!bg-yellow-500";
@@ -31,7 +31,7 @@ export const AppToast = () => {
     autoClose: boolean = true
   ) => {
     if (isVisible && autoClose) {
-      const timer = setTimeout(() => HIDE_TOAST(), 3000);
+      const timer = setTimeout(() => HIDE_TOAST(), toast.closeTimer);
 
       return () => clearTimeout(timer);
     }
@@ -43,7 +43,7 @@ export const AppToast = () => {
 
   return !toast.isVisible ? null : (
     <Animated.View
-      className={`h-[130px] w-full absolute top-0 left-0 right-0 p-15 rounded-2xl justify-end items-center z-50 pb-5 ${getToastStyle(
+      className={`h-[130px] w-full absolute top-0 left-0 right-0 p-15 justify-end items-center z-50 pb-5 ${getToastStyle(
         toast.type
       )}`}
     >

@@ -11,7 +11,13 @@ export const useLayoutStore = create<LayoutStore>()(
       showHeaderNav: false,
       showBottomNav: false,
       headerAttr: { showCustom: false, title: "" },
-      toast: { isVisible: false, message: "", type: APP_TOAST_TYPES.INFO, autoClose: false },
+      toast: {
+        isVisible: false,
+        message: "",
+        type: APP_TOAST_TYPES.INFO,
+        autoClose: false,
+        closeTimer: 5000,
+      },
 
       SET_BASE_BACKGROUND: (color: BaseBackgroundColor) => {
         set({ baseBackground: color });
@@ -23,8 +29,19 @@ export const useLayoutStore = create<LayoutStore>()(
         set({ showBottomNav: isShown });
       },
       RESET_BASE_COLOR: () => set({ baseBackground: "white" }),
-      SHOW_TOAST: (message: string, type: ToastTypes, autoClose?: boolean) => set({ toast: { isVisible: true, message, type, autoClose } }),
-      HIDE_TOAST: () => set({ toast: { isVisible: false, message: "", type: APP_TOAST_TYPES.INFO } }),
+      SHOW_TOAST: (
+        message: string,
+        type: ToastTypes,
+        autoClose?: boolean,
+        closeTimer?: number
+      ) =>
+        set({
+          toast: { isVisible: true, message, type, autoClose, closeTimer },
+        }),
+      HIDE_TOAST: () =>
+        set({
+          toast: { isVisible: false, message: "", type: APP_TOAST_TYPES.INFO },
+        }),
     }),
     {
       name: "layout-store",

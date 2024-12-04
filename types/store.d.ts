@@ -24,12 +24,18 @@ export type LayoutStore = {
     message: string;
     type: ToastTypes;
     autoClose?: boolean;
+    closeTimer?: number;
   };
 
   SET_BASE_BACKGROUND: (color: BaseBackgroundColor) => void;
   SET_SHOW_HEADER_NAV: (isShown: boolean) => void;
   SET_SHOW_BOTTOM_NAV: (isShown: boolean) => void;
   RESET_BASE_COLOR: () => void;
-  SHOW_TOAST: (message: string, type: ToastTypes, autoClose?: boolean) => void;
+  SHOW_TOAST: (
+    message: string,
+    type: ToastTypes,
+    autoClose?: boolean,
+    closeTimer?: number
+  ) => void;
   HIDE_TOAST: () => void;
 };

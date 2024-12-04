@@ -12,6 +12,7 @@ export const ROUTES = {
   USER_CREATE_BOOKING: "/user/booking/create-booking",
   USER_SELECT_BOOKING_ROUTE: "/user/booking/select-booking-route",
   USER_PRECONFIRM_BOOKING: "/user/booking/pre-confirm-booking",
+  USER_CONFIRMED_BOOKING: "/user/booking/confirmed-booking",
   USER_TERMS_CONDITIONS: "/user/booking/terms-and-conditions",
   USER_EMERGENCIES: "/user/emergency",
   USER_HOME: "/user/home",
